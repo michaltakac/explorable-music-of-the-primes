@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The strategy of the manuscript · The Music of the Primes, explorable</title>
+<meta name="description" content="How Masullo's manuscript proposes to prove the generalized Riemann hypothesis: a trace formula in a space where distant zeros cannot be heard, with its prime side computed one prime at a time.">
+<link rel="icon" href="data:,">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<script type="module" src="./src/pages/proof.ts"></script>
+</head>
+<body>
+<main>
+<article>
+<p class="chapter-no">Chapter 7</p>
+<h1>The strategy of the manuscript</h1>
+
+<p class="lede">Everything up to here is established mathematics. This chapter describes what the manuscript adds: a plan for a trace formula in which zeros far from the critical line cannot appear, with its prime side computed one prime at a time.</p>
+
+<div class="status">
+<h3>Reading this chapter</h3>
+<p>The plan below follows the manuscript's own introduction and its letter to Peter Sarnak. The manuscript is a draft that has not been refereed, and its author says parts of the writing are unfinished. This chapter explains the argument as claimed. It does not vouch for it. The <a href="./status.html">status page</a> lists what is and is not in the current text.</p>
+</div>
+
+<h2>Three spaces</h2>
+
+<p>Fix a number field and a Hecke character. To keep things concrete, think of the rationals and zeta. The manuscript works with three spaces of functions on the idele class group, each sitting inside the next in the way a part sits inside a whole.</p>
+
+<div class="table-scroll">
+<table class="ledger">
+  <tr><th>Space</th><th>After the Mellin transform</th><th>Trace of the smear by φ</th></tr>
+  <tr><td><b>The whole.</b> All rapidly decaying functions.</td><td>All well-behaved functions of $s$.</td><td>Zero, when the window of φ does not include $u=0$: nothing gets home.</td></tr>
+  <tr><td><b>The part.</b> The θ-functions of chapter 5, shifted by $|g|^{1/2}$.</td><td>The multiples of $L(s+\tfrac12)$.</td><td>To be computed. It will be the prime side.</td></tr>
+  <tr><td><b>The rest.</b> Functions, where two are counted as equal if they differ by a θ-function.</td><td>The list of values at the zeros of $L(s+\tfrac12)$.</td><td>$\sum_\rho\widehat\varphi(\rho-\tfrac12)$, the zero side.</td></tr>
+</table>
+</div>
+
+<p>The third row is the important one. A θ-function is a multiple of $L$, so it vanishes at every zero of $L$. Two functions that differ by a θ-function therefore agree at all the zeros, and their values at the zeros are all that the quotient remembers. The zeros are the coordinates of the rest. The smear by $\varphi$ multiplies the coordinate at $\rho$ by $\widehat\varphi(\rho-\tfrac12)$.</p>
+
+<p>The whole is the part plus the rest, and traces add up. So the trace on the θ-functions is minus the zero side. The manuscript's stated goal is to compute that same trace directly from the primes.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>A ledger with three lines: total, part, remainder. The remainder is a list with one entry per zero. If the part can be worked out from the primes alone, the books give an equation between primes and zeros.</p></aside>
+
+<h2>The room decides which zeros are heard</h2>
+
+<p>A trace only makes sense once you say how the size of a function is measured, because that decides which infinite sums converge. Meyer measured with an extremely fine yardstick. With it, reading off the value of a Mellin transform at any point is a stable operation, so every zero has a coordinate and every zero appears on the zero side.</p>
+
+<p>The manuscript uses a much coarser yardstick, a single norm:</p>
+
+$$\|\phi\|^{2}=\int|\phi(g)|^{2}\;\max\!\big\{|g|^{2a},|g|^{-2a}\big\}\;\big(1+\log^{2}|g|\big)^{b/2}\,dg .$$
+
+<p>It calls the resulting Hilbert spaces Hardy-Sobolev spaces. The number $a>0$ sets how fast a function must decay, and $b$ sets a degree of smoothness. After the Mellin transform, a function of finite norm is only guaranteed to make sense inside the vertical strip within distance $a$ of the critical line. Reading off a value outside that strip is not a stable operation: functions of tiny norm can have huge values there. In this room, a zero has a coordinate only if it lies within $a$ of the line.</p>
+
+<figure class="fig" id="fig-strip">
+  <div class="fig-stage" style="--h: 460px" role="img" aria-label="The critical strip with a narrower shaded strip of half-width a around the critical line. Known zeros lie on the line. A draggable imagined zero is heard only inside the shaded strip."></div>
+  <div class="fig-controls">
+    <label>Half-width a <input type="range" min="0.02" max="0.5" step="0.01" data-bind="a" data-fmt="f2" aria-label="half-width a of the audible strip"> <output></output></label>
+  </div>
+  <figcaption>The plane of $s$. <span style="color:var(--touch-ink)">The amber strip</span> is the audible region $|\sigma-\tfrac12| &lt; a$. <span class="cool"><span class="key dot"></span> True zeros</span> lie on the centre line. The amber point is an imagined zero off the line, with its mirror image. Drag it, and change $a$.</figcaption>
+</figure>
+
+<div class="table-scroll">
+<table class="ledger">
+  <tr><th>Formula</th><th>Zeros that appear on its zero side</th><th>The imagined zero at <span data-out="imag"></span></th></tr>
+  <tr><td>Weil's explicit formula</td><td>All of them</td><td>Counted</td></tr>
+  <tr><td>The manuscript's formula with $a=$ <span data-out="aVal"></span></td><td>Those within <span data-out="aVal2"></span> of the critical line</td><td><span class="prose" data-out="heard"></span></td></tr>
+</table>
+</div>
+
+<aside class="plain"><h4>In plain words</h4><p>The norm works like earmuffs. Notes from zeros near the critical line still get through. A zero further away than $a$ is silent. Meyer listened without earmuffs and heard every zero equally, which is why his formula could not say where the zeros are.</p></aside>
+
+<p>The author stresses that the zeros play no part in choosing the room. The norm is chosen by asking what the prime-side computation needs in order to go through. The claim is that it goes through for every $a>0$, however small.</p>
+
+<h2>Mertens' wall</h2>
+
+<p>Why had this not been done before? The direct way to compute the prime side handles all the primes at once, through an infinite product of operators with one factor per prime. The Mellin transform turns that product into the Euler product. In Meyer's fine setting the product converges. In a normed room it would need the Euler product to converge inside the critical strip, and it does not.</p>
+
+<figure class="fig" id="fig-mertens">
+  <div class="fig-pair wide-right">
+    <div class="fig-stage" id="fig-mplane" style="--h: 400px" role="img" aria-label="The plane of s with a draggable point."></div>
+    <div class="fig-stage" id="fig-mpath" style="--h: 400px" role="img" aria-label="The path traced by partial Euler products as more primes are included."></div>
+  </div>
+  <figcaption><b>Left:</b> drag the amber point to choose $s$. <b>Right:</b> <span class="warm"><span class="key"></span>the partial Euler products</span> $\prod_{p\le P}(1-p^{-s})^{-1}$ for the first 1500 primes, joined in order. The <span class="cool"><span class="key dot"></span> blue point</span> is $\zeta(s)$.</figcaption>
+</figure>
+
+<p>At $s=$ <span data-out="mS"></span>: <span class="prose" data-out="mVerdict"></span> Over the last 500 primes the product moved by <span data-out="mDrift"></span>.</p>
+
+<p>To the right of $\sigma=1$ the path homes in on $\zeta(s)$. Inside the strip it keeps wandering, and no amount of patience makes it settle. Classical estimates of Mertens from 1874 already show the partial products on the real axis growing without bound once $\sigma\le1$. In the letter to Sarnak the author calls this a warning sign: a method that runs into it needs a new idea.</p>
+
+<h2>One prime at a time</h2>
+
+<p>The new idea is to remove the Euler factors one prime at a time and to account exactly for what each removal costs. In outline:</p>
+
+<ol>
+<li>Start from θ-functions built with the ball at every prime outside a finite set $S$, as in chapter 5.</li>
+<li>At one prime $p$ outside $S$, replace the ball by its outer shell. After the Mellin transform this multiplies everything by $1-\chi(p)p^{-s}$. One Euler factor is gone.</li>
+<li>The θ-functions before and after the replacement differ by a piece that can be written down completely. After the Mellin transform, that piece is recorded by values at the zeros of $1-\chi(p)p^{-s}$. Those zeros form an evenly spaced comb on a vertical line, with spacing $2\pi/\log p$.</li>
+<li>That piece is a copy of the loop from chapter 6 with $\gamma=p$. The pure waves on the loop form a basis for it, which the manuscript calls an orbital Schauder basis. With a basis in hand, the trace of the smear is read off like the diagonal of a matrix, and it comes out as the loop count $\log p\sum_k p^{-k/2}\varphi(p^k)$.</li>
+<li>If the window of $\varphi$ closes before time $\log p$, that count is zero.</li>
+</ol>
+
+<p>So for a fixed window, let $S$ contain every prime below the window's end. Each prime outside $S$ can be removed at no cost to the trace. Once they are all removed, what remains involves only the finitely many primes in $S$ and the ordinary rulers. For finitely many places the trace was computed by Connes in 1998, and the manuscript adapts his calculation. The outcome is the prime side of Weil's formula.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>Earlier methods tried to carry all the primes across the river in one boat, and the boat only floats in very calm water. This method carries them across one at a time and weighs the boat after each trip. Almost every trip turns out to weigh nothing.</p></aside>
+
+<h3>Combs that never line up</h3>
+
+<p>For the step-by-step removal to work in a normed room, the combs belonging to different primes must not pile up on top of each other. The manuscript proves a statement of this kind in its chapter 7: the combs of two primes have at most one point in common.</p>
+
+<figure class="fig" id="fig-combs">
+  <div class="fig-stage" style="--h: 330px" role="img" aria-label="Rows of evenly spaced marks, one row per prime, with spacing two pi over log p. Marks in different rows line up only at zero."></div>
+  <div class="fig-controls">
+    <span class="seg" role="group" aria-label="Which arithmetic">
+      <button class="btn" type="button" data-bind="world" data-value="number">Primes 2, 3, 5, 7, 11, 13</button>
+      <button class="btn" type="button" data-bind="world" data-value="function">Norms 2, 4, 8, 16, 32, 64</button>
+    </span>
+    <label>Window <input type="range" min="15" max="150" step="1" data-bind="W" aria-label="half-height of the window"> <output></output></label>
+  </div>
+  <figcaption>Each row shows the heights $t=2\pi m/\log q$ at which $1-q^{-it}$ vanishes. <span class="warm"><span class="key"></span>Teeth</span>, and <span style="color:var(--ink)"><span class="key"></span>full-height lines</span> where two or more rows coincide.</figcaption>
+</figure>
+
+<p>Between $-$<span data-var="W" data-min="15" data-max="150" data-step="1" data-label="half-height of the window"></span> and $+$<span data-out="Wout"></span> the rows share <span class="prose" data-out="shared"></span>. For true primes the only shared tooth is at 0, at any window size. Two teeth could only coincide if $\log p/\log q$ were a fraction, which would mean a power of $p$ equals a power of $q$. Unique factorisation forbids that.</p>
+
+<p>Switch to the second option. In the arithmetic of curves over a finite field, the sizes that play the role of primes are all powers of one number, here 2, and the combs coincide over and over. The manuscript's chapter 14 explains that for this reason its method gives nothing new there. That case of the Riemann hypothesis was proved by Weil in the 1940s by other means.</p>
+
+<p>In a number field of degree $d$, up to $d$ prime ideals can sit above the same ordinary prime and share one comb, so teeth can stack up to $d$ deep. The manuscript says this is why it takes the smoothness parameter $b$ to be at least $2d$.</p>
+
+<h2>The role of one half</h2>
+
+<p>The θ-functions entered the first table shifted by $|g|^{1/2}$. The manuscript says this exponent is forced by the final step. The calculation for finitely many places uses the Fourier transform on the adeles, which belongs to addition, while everything else here belongs to multiplication. The measures for the two differ by one factor of $|x|$. A shift by $|g|^{a'}$ produces $|x|^{2a'}$ along the diagonal of the kernel, and this supplies exactly the missing factor when $a'=\tfrac12$. In this approach, that is the origin of the $\tfrac12$ in the hypothesis.</p>
+
+<h2>From the trace formula to the zeros</h2>
+
+<p>The formula the manuscript states as its main theorem (12.5.1.1) reads, for every window $\varphi$ that vanishes on the elements of size 1:</p>
+
+$$\underbrace{\sum_{\text{places }v}\big(\text{term for }v\big)(\varphi)}_{\text{the same prime side as Weil's}}\;=\;\widehat\varphi(\tfrac12)+\widehat\varphi(-\tfrac12)\;-\!\!\sum_{\rho\ \text{within } a \text{ of the line}}\!\!\widehat\varphi\big(\rho-\tfrac12\big).$$
+
+<p>The introduction then outlines the last step. Feed in windows that imitate the function $t^{-z}$ for $t>1$, suitably cut off and smoothed. As the imitation sharpens:</p>
+
+<ul>
+<li>the terms for the primes add up to the logarithmic derivative $L'(z+\tfrac12)/L(z+\tfrac12)$;</li>
+<li>the finitely many terms for the ordinary rulers stay bounded and well behaved;</li>
+<li>the zero side contains only zeros within $a$ of the line, so as a function of $z$ it has no singularities to the right of $a$.</li>
+</ul>
+
+<p>The conclusion is that $L'/L$ has no singularity with real part bigger than $\tfrac12+a$, apart from the one at $s=1$ that comes from the pole. Every zero of $L$ is a singularity of $L'/L$. So $L$ has no zero there. Since $a$ can be taken as small as one likes, there is no zero with real part bigger than $\tfrac12$, and the mirror symmetry rules out real part smaller than $\tfrac12$.</p>
+
+<p>Here is another way to see why such a formula would be decisive. This comparison is our gloss, though the manuscript notes the same contrast. Weil's formula and the manuscript's formula have the same prime side. Weil's zero side lists every zero. The manuscript's lists only zeros within $a$ of the line. Subtract one from the other: the terms of any zero outside the strip must add up to zero for every allowed window. Drag the imagined zero in the figure above out of the amber strip. Its line in the table changes, and that is the contradiction: a zero cannot be counted in one true formula and absent from another with the same total.</p>
+
+<p>According to the introduction, the inputs taken from classical theory are that $L$ has no zeros on the line $\sigma=1$, that it grows at most polynomially in vertical strips, and a rough count of zeros up to a given height. The introduction says that Weil's positivity criterion, the classical reformulation of the hypothesis, is not used.</p>
+
+<h2>A map of the 940 pages</h2>
+
+<div class="table-scroll">
+<table class="ledger">
+  <tr><th>Manuscript</th><th>What it is for</th><th>On this site</th></tr>
+  <tr><td>Chapters 2, 3</td><td>θ-functions and zeta integrals, after Tate</td><td><a href="./adeles.html">Chapter 5</a></td></tr>
+  <tr><td>Chapter 4</td><td>Bases of pure waves on loops</td><td><a href="./trace.html">Chapter 6</a></td></tr>
+  <tr><td>Chapters 5, 6</td><td>Structure of the spaces of θ-functions. They are exactly the multiples of $L$</td><td>The first table above</td></tr>
+  <tr><td>Chapter 7</td><td>The piece attached to each prime, its basis, and the comb theorem</td><td>One prime at a time</td></tr>
+  <tr><td>Chapter 8</td><td>Loops and resting points as geometry</td><td><a href="./trace.html">Chapter 6</a></td></tr>
+  <tr><td>Chapters 9, 10</td><td>Hardy-Sobolev spaces and the zero side</td><td>The room</td></tr>
+  <tr><td>Chapters 11, 12</td><td>Removing primes, the finite calculation, the trace formula</td><td>One prime at a time</td></tr>
+  <tr><td>Chapter 13</td><td>From the trace formula to the zeros</td><td>The previous section</td></tr>
+  <tr><td>Chapter 14</td><td>Multiplicities, function fields, higher rank</td><td><a href="./status.html">Status</a></td></tr>
+  <tr><td>Appendices A to E</td><td>Background: adeles, analytic number theory, functional analysis, test functions, stacks</td><td></td></tr>
+</table>
+</div>
+
+<h2>Steps that need checking</h2>
+
+<p>The outline is short and the manuscript is long because each step hides hard analysis. The convergence of the prime-by-prime removal inside a normed space, the claim that every removed piece carries exactly the loop trace and nothing else, and the passage to the limit with the special windows all need complete proofs. Several of the sections that would contain them are marked unfinished in the current text. The <a href="./status.html">status page</a> gives the details.</p>
+</article>
+</main>
+</body>
+</html>

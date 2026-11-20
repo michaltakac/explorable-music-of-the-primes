@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status, sources, glossary · The Music of the Primes, explorable</title>
+<meta name="description" content="What is established mathematics, what Masullo's manuscript claims, and what the current text of the manuscript contains, with sources and a glossary.">
+<link rel="icon" href="data:,">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<script type="module" src="./src/pages/status.ts"></script>
+</head>
+<body>
+<main>
+<article>
+<p class="chapter-no">Reference</p>
+<h1>Status, sources, glossary</h1>
+
+<p class="lede">This page keeps three things apart: mathematics that is established, the claims the manuscript makes, and what the current text of the manuscript contains.</p>
+
+<h2>Established</h2>
+<ul>
+<li>The prime number theorem (Hadamard, de la Vallée Poussin, 1896) and the explicit formulas of Riemann, von Mangoldt and Weil that tie primes to zeros.</li>
+<li>The mirror symmetry of zeta and of all Dirichlet and Hecke L-functions, including Tate's adelic proof (1950).</li>
+<li>Connes' trace formula for finitely many places (1998) and Meyer's global trace formula (2005), which is equivalent to Weil's explicit formula.</li>
+<li>Numerical verification of the Riemann hypothesis for all zeros of zeta up to height $3\cdot10^{12}$ (Platt and Trudgian, 2021).</li>
+<li>The analogue of the Riemann hypothesis for curves over finite fields (Weil, 1948) and for varieties over finite fields (Deligne, 1974).</li>
+</ul>
+<p>The Riemann hypothesis and its generalizations for number fields are not on this list. They have been open since 1859.</p>
+
+<h2>Claimed in the manuscript</h2>
+<ul>
+<li>A trace formula on Hardy-Sobolev completions of the space of functions on the idele class group, in which only zeros within a chosen distance of the critical line contribute (Theorem 12.5.1.1).</li>
+<li>As a consequence, the generalized Riemann hypothesis for the L-function of every unitary Hecke character of every number field. This includes the Riemann zeta function, all Dirichlet L-functions and all Dedekind zeta functions.</li>
+<li>Chapter 14 also discusses a bound on the multiplicity of zeros away from the centre, by the degree of the number field.</li>
+</ul>
+<p>The manuscript says its method does not extend to function fields over finite fields, and that the higher-rank case (the L-functions of automorphic forms on $GL_n$) is the subject of ongoing work. It does not claim that zeros are simple.</p>
+
+<h2>The state of the text</h2>
+
+<p>These notes describe the PDF dated 20 November 2026, which has 940 pages. They are a description of what is on the page. They are not a referee's report, and nothing here establishes that any step of the argument is right or wrong.</p>
+
+<h3>The author's own account</h3>
+<p>The acknowledgements (page 6) say the work began in the author's first year of graduate school at Stanford under Brian Conrad and took nearly twelve years. They say the mathematics is complete, that the writing still needs to be filled in at several places, that the introduction is unfinished and will be replaced, and that the author and Conrad know of several glitches that were being addressed. They describe a plan to spend a year polishing the paper, and say the present version was released early on advice. The introduction includes excerpts from a letter sent to Peter Sarnak in October 2026.</p>
+
+<h3>Findings from a full read</h3>
+<div class="table-scroll">
+<table class="ledger">
+  <tr><th>Where</th><th>What is there</th></tr>
+  <tr><td>Chapter 13, pages 521 to 522</td><td>This is the chapter that should deduce the location of the zeros from the trace formula. Sections 13.1 and 13.2 are headings without text. The main theorem (13.3.1.2) has no statement: its footnotes are the author's reminders to insert the statement and to state and prove the main theorems. The trace formula restated there carries a footnote saying its statement is to be corrected. The deduction is outlined only in the introduction (sections 1.4 and 1.8.4 to 1.8.5).</td></tr>
+  <tr><td>Section 12.3, page 514</td><td>The section meant to assemble the pieces of the prime-side computation has a title and a footnote saying the section is to be included.</td></tr>
+  <tr><td>Chapter 11, pages 475 to 496</td><td>The proof that prime factors can be removed inside the normed space (Theorem 11.1.2.1) contains several of the author's "return here" markers, including at part (2), where the written argument starts partway through. Section 11.3.1 repeats the overview from the introduction. The proof that each removed piece has the expected trace (Theorem 11.3.2.1) is about one page long.</td></tr>
+  <tr><td>Chapters 9 and 10</td><td>Fourteen "return here" markers. The last, at Theorem 10.4.2.8 on page 464, asks for the proof to be completed.</td></tr>
+  <tr><td>Chapters 4 to 7</td><td>Further markers: two in chapter 4 (pages 199 to 200), working notes in chapter 5 (pages 231 to 236, 250), three in the proof of the fourth structure theorem (pages 294 to 295). The proof of Proposition 7.3.3.2 on page 359 ends with a sentence that begins by saying what remains to be shown.</td></tr>
+  <tr><td>Appendix B, pages 616 to 625</td><td>Footnotes in the section on explicit formulas say that some proofs and formulas there are still to be checked.</td></tr>
+  <tr><td>Appendices D and E</td><td>A footnote on page 810 says an argument has too many loose ends. Appendix E opens with a note that it is to be completed and shortened, and a footnote on page 926 says coarse spaces, which chapter 8 uses, are not yet discussed. The author says chapter 8's geometric picture is not logically needed.</td></tr>
+  <tr><td>Whole text</td><td>Thirty "return here" markers in all, and unresolved cross-references printed as "??" on thirteen pages.</td></tr>
+</table>
+</div>
+
+<h3>Two places where the text disagrees with itself</h3>
+<ul>
+<li>The trace formula appears in two forms. Theorem 12.5.1.1 sums over zeros inside a strip around the critical line, for windows that vanish on elements of size 1. Theorem 13.3.1.1 sums over zeros on the critical line with multiplicity capped at the degree of the field, under different conditions on the window.</li>
+<li>The introduction (section 1.4.6) says Weil's positivity criterion is not used. Section 14.1.2 describes the theorem on zeros as a consequence of the trace formula combined with a positivity criterion, citing a theorem whose reference is unresolved.</li>
+</ul>
+<p>These read as traces of different stages of drafting. A final version would have to settle which statements are meant.</p>
+
+<h2>Weighing a claim like this</h2>
+<p>A proof of a famous conjecture is accepted when specialists have checked every step and the checks have held up, which for a text of this length takes months or years. Unfinished sections do not show that an argument is wrong. They mean it cannot yet be checked in full. Serious attempts on the Riemann hypothesis have failed before at a single step, so caution is the normal response and says nothing against this author.</p>
+<p>The ideas explained in this guide are worth understanding whichever way the checking goes: the explicit formula, the adelic picture, trace formulas, and the proposal to compute the prime side one prime at a time in a normed space.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>A. M. Masullo, <i>The Music of the Primes</i>, manuscript, PDF dated 20 November 2026.</li>
+<li>B. Riemann, <i>Über die Anzahl der Primzahlen unter einer gegebenen Grösse</i>, 1859.</li>
+<li>J. Tate, <i>Fourier analysis in number fields and Hecke's zeta-functions</i>, thesis, 1950; printed in Cassels and Fröhlich, <i>Algebraic Number Theory</i>, 1967.</li>
+<li>A. Weil, <i>Sur les "formules explicites" de la théorie des nombres premiers</i>, 1952.</li>
+<li>P. Sarnak, <i>Asymptotic behavior of periodic orbits of the horocycle flow and Eisenstein series</i>, Communications on Pure and Applied Mathematics 34, 1981.</li>
+<li>C. Deninger, <i>Lefschetz trace formulas and explicit formulas in analytic number theory</i>, Journal für die reine und angewandte Mathematik 441, 1993.</li>
+<li>A. Connes, <i>Trace formula in noncommutative geometry and the zeros of the Riemann zeta function</i>, Selecta Mathematica 5, 1999.</li>
+<li>R. Meyer, <i>On a representation of the idele class group related to primes and zeros of L-functions</i>, Duke Mathematical Journal 127, 2005.</li>
+<li>D. Platt and T. Trudgian, <i>The Riemann hypothesis is true up to 3·10<sup>12</sup></i>, Bulletin of the London Mathematical Society 53, 2021.</li>
+<li>B. Victor, <i>Explorable Explanations</i>, 2011, and <i>Up and Down the Ladder of Abstraction</i>, 2011.</li>
+</ul>
+<p>The manuscript shares its title with Marcus du Sautoy's 2003 book for general readers, which is a different work.</p>
+
+<h2>Glossary</h2>
+<dl class="glossary">
+<dt>Adele</dt><dd>A list with one entry for each ruler of a number field: one for each ordinary notion of size and one for each prime. All but finitely many entries are integers of their kind.</dd>
+<dt>Character</dt><dd>A rule that tags numbers with points on the unit circle and respects multiplication. Dirichlet characters tag whole numbers by their remainder. Hecke characters tag the primes of a number field, and are the same thing as characters of the idele class group.</dd>
+<dt>Critical line</dt><dd>The vertical line of complex numbers with real part ½. It is the fixed line of the mirror symmetry of an L-function.</dd>
+<dt>Explicit formula</dt><dd>An identity with a sum over primes on one side and a sum over zeros on the other, valid for a whole class of test functions.</dd>
+<dt>Hardy-Sobolev space</dt><dd>The manuscript's name for a Hilbert space of functions on the idele class group, defined by a weight that forces decay at rate $a$ and smoothness of degree $b$. After the Mellin transform its members live on a strip of half-width $a$.</dd>
+<dt>Idele, idele class group</dt><dd>An idele is an adele whose entries can all be inverted. The idele class group is the ideles with two counted as equal when they differ by a number of the field. Its elements have a size, a positive real number.</dd>
+<dt>Kernel</dt><dd>The table of weights of a smear: how much of the value at $y$ ends up at $x$.</dd>
+<dt>L-function</dt><dd>A function built from a character as a sum over whole numbers, or equally as a product over primes. Zeta is the L-function of the trivial character.</dd>
+<dt>Mellin transform</dt><dd>The decomposition of a function on the positive numbers into pure powers $t^{s}$. It is the Fourier transform written for multiplication.</dd>
+<dt>Number field</dt><dd>A number system obtained from the rationals by adjoining roots of polynomial equations, such as $\sqrt{-1}$ or $\sqrt{2}$.</dd>
+<dt>Place</dt><dd>One ruler of a number field: either a prime or an ordinary notion of size.</dd>
+<dt>Schauder basis</dt><dd>A sequence of functions such that every function in the space is a unique infinite combination of them. With a basis, the trace of an operator can be read off as a sum of diagonal entries.</dd>
+<dt>θ-function (adelic)</dt><dd>What you get by adding up the values of a function on the adeles over all nonzero numbers of the field. Its Mellin transform is a multiple of an L-function.</dd>
+<dt>Trace</dt><dd>For a matrix, the sum of the diagonal entries, which equals the sum of the eigenvalues. For a smear, the total of the kernel along the diagonal.</dd>
+<dt>Trace formula</dt><dd>An equation obtained by computing one trace in two ways.</dd>
+<dt>Zero</dt><dd>A value of $s$ where an L-function equals 0. The generalized Riemann hypothesis says every zero in the critical strip lies on the critical line.</dd>
+</dl>
+</article>
+</main>
+</body>
+</html>

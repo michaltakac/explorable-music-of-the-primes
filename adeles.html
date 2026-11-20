@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every prime's point of view · The Music of the Primes, explorable</title>
+<meta name="description" content="Each prime has its own ruler for measuring numbers. Adeles keep all the rulers side by side, and folding a function over the rationals produces zeta together with its mirror symmetry.">
+<link rel="icon" href="data:,">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<script type="module" src="./src/pages/adeles.ts"></script>
+</head>
+<body>
+<main>
+<article>
+<p class="chapter-no">Chapter 5</p>
+<h1>Every prime's point of view</h1>
+
+<p class="lede">The manuscript is written in the language of adeles and ideles, which goes back to Claude Chevalley in the 1930s and which John Tate used in 1950 to rebuild the theory of zeta from scratch. The language sounds abstract. Underneath, it is a way of measuring a number with one ruler per prime, all at once.</p>
+
+<h2>One ruler per prime</h2>
+
+<p>The ordinary ruler says 48 is bigger than 5. The 2-adic ruler measures something else: how divisible a number is by 2. It calls a number small when a high power of 2 divides it. Since $48=2^4\cdot3$, its 2-adic size is $1/16$. In general, if $p^k$ is the exact power of $p$ in $x$, then</p>
+
+$$|x|_p=p^{-k}.$$
+
+<p>For a fraction, powers of $p$ in the denominator count as negative $k$, so they make the number $p$-adically large.</p>
+
+<figure class="fig" id="fig-product">
+  <div class="fig-stage" style="--h: 340px" role="img" aria-label="Bars showing the logarithm of the size of a rational number on each ruler. The bars above and below the axis always cancel."></div>
+  <div class="fig-controls">
+    <label>Numerator <input type="range" min="1" max="720" step="1" data-bind="a" aria-label="numerator"> <output></output></label>
+    <label>Denominator <input type="range" min="1" max="720" step="1" data-bind="b" aria-label="denominator"> <output></output></label>
+  </div>
+  <figcaption>The size of $x$ on each ruler, on a logarithmic scale. A bar above the line means bigger than 1, below means smaller. <span class="warm"><span class="key"></span>Prime rulers</span>, <span style="color:var(--ink)"><span class="key"></span>the ordinary ruler</span> (marked ∞).</figcaption>
+</figure>
+
+<p>Take $x=$ <span data-var="a" data-min="1" data-max="720" data-step="1" data-label="numerator"></span>$/$<span data-var="b" data-min="1" data-max="720" data-step="1" data-label="denominator"></span>, which factors as <span class="prose" data-out="factored"></span>. Its sizes are <span class="prose" data-out="sizes"></span>. Multiply all of them together and the answer is <span data-out="product"></span>.</p>
+
+<p>It is always 1. Whatever a rational number gains on one ruler it loses on the others. This is called the product formula, and it is the reason the rulers belong together:</p>
+
+$$|x|_\infty\cdot\prod_{p}|x|_p=1\qquad\text{for every rational }x\neq0.$$
+
+<aside class="plain"><h4>In plain words</h4><p>Picture a committee judging one number. One member cares about ordinary size. Every other member is assigned a prime and cares only about how divisible the number is by that prime. For a fraction, their verdicts always multiply to 1.</p></aside>
+
+<h2>Adeles and ideles</h2>
+
+<p>Each ruler has its own way of filling the gaps between rational numbers. The ordinary ruler gives the real numbers. The $p$-adic ruler gives the $p$-adic numbers $\mathbf{Q}_p$, in which a sequence like $1,\ 1+p,\ 1+p+p^2,\dots$ converges.</p>
+
+<p>An <b>adele</b> is a list with one entry for each ruler: a real number, a 2-adic number, a 3-adic number, and so on, with the rule that all but finitely many entries are $p$-adic integers. Every rational number gives an adele by repeating itself in every slot. An <b>idele</b> is an adele whose entries can all be inverted. Its size is the product of the sizes of its entries, each measured on its own ruler.</p>
+
+<p>The product formula says that rational numbers have idele size 1. So the size is unchanged when an idele is multiplied by a rational number, and it makes sense on the quotient</p>
+
+$$C_{\mathbf{Q}}=\text{ideles}\,/\,\mathbf{Q}^{\times},$$
+
+<p>the <b>idele class group</b>. For the rationals it is the product of two simple pieces: the positive real numbers $\mathbf{R}_{>0}$, which record the size, and a compact group that records the $p$-adic directions. Every number field $F$ has its own $C_F$ built the same way.</p>
+
+<p>This group is the stage for everything that follows. A Hecke character from the last chapter is, by definition, a character of $C_F$. The variable $s$ enters through the size: $\chi$ can be multiplied by the function $|g|^{s}$, and $L(s,\chi)$ is a function of that product. Each prime $p$ picks out one direction in $C_{\mathbf{Q}}$, the idele that is $p$ in the $p$-adic slot and 1 elsewhere. It has size $1/p$. Stepping along it moves you a distance $\log p$ along the size axis.</p>
+
+<h2>A ball made of shells</h2>
+
+<p>The $p$-adic integers $\mathbf{Z}_p$ are the $p$-adic numbers of size at most 1. They form a ball. The ball splits into shells according to exact size: the outer shell holds the numbers not divisible by $p$, the next shell the numbers divisible by $p$ once, the next those divisible twice, and so on inwards.</p>
+
+<figure class="fig" id="fig-shells">
+  <div class="fig-stage" style="--h: 440px" role="img" aria-label="The p-adic integers drawn as concentric rings of points. Each ring is one shell, and each ring is a smaller copy of the one outside it."></div>
+  <div class="fig-controls">
+    <span class="seg" role="group" aria-label="Which prime">
+      <button class="btn" type="button" data-bind="p" data-value="2">p = 2</button>
+      <button class="btn" type="button" data-bind="p" data-value="3">p = 3</button>
+      <button class="btn" type="button" data-bind="p" data-value="5">p = 5</button>
+      <button class="btn" type="button" data-bind="p" data-value="7">p = 7</button>
+    </span>
+    <label>Shells lit <input type="range" min="0" max="7" step="1" data-bind="shells" aria-label="number of shells counted"> <output></output></label>
+  </div>
+  <figcaption>Each ring is one shell of the ball $\mathbf{Z}_p$, drawn for whole numbers. Numbers that agree in their first $p$-adic digits sit close together on a ring. Multiplying by $p$ carries each ring onto the next one in. The gap in each ring is where the multiples of $p$ would be; they live on the inner rings. <span class="warm"><span class="key dot"></span> Lit rings</span> are the shells counted so far.</figcaption>
+</figure>
+
+<p>Now weigh the shells. Give a point of size $|x|_p$ the weight $|x|_p^{\,s}$ and add up over a shell, using the measure that suits multiplication, in which every shell has the same total mass. Shell number $k$ then weighs $p^{-ks}$. With $p=$ <span data-out="pVal"></span> and $s=$ <span data-var="s" data-min="0.5" data-max="3" data-step="0.05" data-fmt="f2" data-label="the exponent s"></span>, the first <span data-out="shellsWord"></span> weigh <span data-out="shellSum"></span> together. All the shells together weigh</p>
+
+$$1+p^{-s}+p^{-2s}+\dots=\frac{1}{1-p^{-s}},$$
+
+<p>which here equals <span data-out="eulerFactor"></span>. That is the factor for $p$ in Euler's product. The outer shell alone weighs exactly 1.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>Each Euler factor is what you get by weighing a whole $p$-adic ball. Weigh only its outer shell and the factor disappears. The manuscript uses this to switch off the factor for one prime at a time.</p></aside>
+
+<h2>Folding a function over the rationals</h2>
+
+<p>Here is how zeta comes out of the adeles. Take a function on the real line, such as the bell curve $f(x)=e^{-\pi x^2}$, and fold it: at scale $t$, add up its values at every nonzero multiple of $t$.</p>
+
+$$\theta(t)=\sum_{n\neq0}f(nt)$$
+
+<p>The folded function forgets the difference between $x$, $2x$, $3x$ and so on. In adelic terms, the bell curve is paired with the simplest function at each prime, the one that is 1 on the ball $\mathbf{Z}_p$ and 0 outside, and the sum runs over all nonzero rationals. The result is a function on the idele class group. The manuscript calls functions made this way <b>adelic θ-functions</b>.</p>
+
+<figure class="fig" id="fig-theta">
+  <div class="fig-stage" style="--h: 360px" role="img" aria-label="The folded bell curve theta of t, and its rescaled version which is symmetric when t is swapped with one over t."></div>
+  <figcaption><span class="warm"><span class="key"></span>$1+\theta(t)$</span>, the folded bell curve with the $n=0$ term put back. <span class="cool"><span class="key"></span>$\sqrt{t}\,\big(1+\theta(t)\big)$</span>, the same thing rescaled. The axis is logarithmic in $t$. Drag the amber point. The blue point is its mirror image at $1/t$.</figcaption>
+</figure>
+
+<p>At $t=$ <span data-var="t" data-min="0.15" data-max="6.5" data-step="0.01" data-scale="log" data-fmt="f2" data-label="scale t"></span> the blue curve has height <span data-out="gT"></span>. At $1/t=$ <span data-out="tInv"></span> its height is <span data-out="gInv"></span>. The blue curve is a perfect mirror image of itself under $t\mapsto1/t$. Jacobi found this identity in the 1820s. It comes from the Poisson summation formula: summing a function over a grid gives the same answer as summing its Fourier transform over the reciprocal grid, and the bell curve is its own Fourier transform.</p>
+
+<p>Riemann's second proof of the functional equation turns this picture into a statement about zeta. Decompose $\theta$ into pure powers $t^{-s}$ (this is called the Mellin transform). Folding contributes the factor $\sum n^{-s}=\zeta(s)$, the bell curve contributes a factor built from the gamma function, and the mirror $t\mapsto 1/t$ becomes the mirror $s\mapsto 1-s$:</p>
+
+$$\pi^{-s/2}\,\Gamma\!\left(\tfrac{s}{2}\right)\zeta(s)\quad\text{is unchanged when } s \text{ is replaced by } 1-s .$$
+
+<p>The fixed line of that mirror is $\sigma=\tfrac12$. This is where the critical line comes from.</p>
+
+<p>Tate's thesis runs the same argument for any number field and any Hecke character, with any reasonable function in place of the bell curve. At each prime the local calculation is the ball-and-shell computation from the previous figure, which is why the answer is an Euler product. Two facts from that theory carry the rest of this story:</p>
+
+<ul>
+<li>The Mellin transform of an adelic θ-function is always a multiple of $L(s,\chi)$. The manuscript proves a converse in its chapter 6: the multiples of $L$ that are well behaved all arise this way.</li>
+<li>Replacing the ball $\mathbf{Z}_p$ by its outer shell in the recipe multiplies the result by $1-\chi(p)p^{-s}$. That is, it removes one Euler factor.</li>
+</ul>
+
+<p>So the space of θ-functions is, after the Mellin transform, the space of multiples of $L$. A zero of $L$ is a point where every one of those multiples vanishes. The next chapter turns that observation into something that can be computed.</p>
+</article>
+</main>
+</body>
+</html>

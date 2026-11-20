@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counting primes · The Music of the Primes, explorable</title>
+<meta name="description" content="Count the primes and a smooth curve appears, with a tremor on top. That tremor is the subject of the Riemann hypothesis.">
+<link rel="icon" href="data:,">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<script type="module" src="./src/pages/primes.ts"></script>
+</head>
+<body>
+<main>
+<article>
+<p class="chapter-no">Chapter 1</p>
+<h1>Counting primes</h1>
+
+<p class="lede">A prime is a whole number bigger than 1 that only 1 and itself divide: 2, 3, 5, 7, 11, 13. No formula hands them out one after another. Ask a different question, how many primes there are below a given size, and a regular shape shows up.</p>
+
+<h2>A staircase</h2>
+
+<p>Walk along the number line and climb one step each time you pass a prime. Your height when you reach $x$ is written $\pi(x)$, the number of primes up to $x$.</p>
+
+<figure class="fig" id="fig-staircase">
+  <div class="fig-stage" style="--h: 400px" role="img" aria-label="Staircase graph of the number of primes up to x, with the smooth curve Li(x) drawn through it."></div>
+  <div class="fig-controls">
+    <label>Count up to <input type="range" min="1.5" max="5" step="0.01" data-bind="X" data-scale="log" aria-label="upper limit"> <output></output></label>
+    <button class="btn" type="button" data-bind="showLi">Gauss's curve Li(x)</button>
+    <button class="btn" type="button" data-bind="showXlog">Simpler curve x / log x</button>
+  </div>
+  <figcaption><span class="warm"><span class="key"></span>π(x)</span>, one step per prime. Move the pointer over the graph to read values. Both smooth curves can be switched on and off.</figcaption>
+</figure>
+
+<p>Up to <span data-var="X" data-min="30" data-max="100000" data-step="1" data-scale="log" data-label="upper limit X"></span> there are <span data-out="pi"></span> primes. Gauss, working from printed tables as a teenager, guessed that near a number $x$ about one number in $\log x$ is prime. Adding up those odds from 2 to $x$ gives the smooth curve</p>
+
+$$\mathrm{Li}(x)=\int_2^x \frac{dt}{\log t},$$
+
+<p>which predicts <span data-out="li"></span>. The guess is off by <span data-out="err"></span>, which is <span data-out="errpct"></span> of the count.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>Primes thin out as numbers grow, and they thin out at a known rate. Near a million about one number in 14 is prime. Near a billion it is about one in 21.</p></aside>
+
+<p>Drag the limit up towards 100,000. The steps shrink until the staircase and the curve are hard to tell apart. That is the prime number theorem, proved in 1896 by Hadamard and by de la Vallée Poussin: the ratio $\pi(x)/\mathrm{Li}(x)$ tends to 1.</p>
+
+<h2>Weighing each prime</h2>
+
+<p>The bookkeeping gets cleaner when every prime $p$ counts for $\log p$ instead of 1, and its powers $p^2, p^3, \dots$ count for $\log p$ as well. The weighted count is Chebyshev's function</p>
+
+$$\psi(x)=\sum_{p^k\le x}\log p .$$
+
+<p>With this weighting Gauss's curve becomes the straight line $y=x$, and the prime number theorem says $\psi(x)$ hugs that line.</p>
+
+<figure class="fig" id="fig-psi">
+  <div class="fig-stage" style="--h: 340px" role="img" aria-label="Staircase graph of Chebyshev's function psi of x against the straight line y equals x."></div>
+  <figcaption><span class="warm"><span class="key"></span>ψ(x)</span> jumps by log p at every power of a prime p. The straight line is y = x.</figcaption>
+</figure>
+
+<h2>The tremor</h2>
+
+<p>Subtract the line and look at what is left over. The leftover $\psi(x)-x$ never settles. It swings above and below zero for as far as anyone has computed, and it is known to keep changing sign forever.</p>
+
+<figure class="fig" id="fig-error">
+  <div class="fig-stage" style="--h: 320px" role="img" aria-label="Graph of psi of x minus x, oscillating around zero inside a band of half-width square root of x."></div>
+  <div class="fig-controls">
+    <label>Look up to <input type="range" min="2" max="5" step="0.01" data-bind="Y" data-scale="log" aria-label="upper limit of the error plot"> <output></output></label>
+  </div>
+  <figcaption><span class="warm"><span class="key"></span>ψ(x) − x</span>. The shaded band is ±√x.</figcaption>
+</figure>
+
+<p>Up to <span data-var="Y" data-min="100" data-max="100000" data-step="1" data-scale="log" data-label="upper limit of the error plot"></span> the largest miss is <span data-out="maxerr"></span>, while $\sqrt{x}$ at the right-hand edge is <span data-out="sqrtY"></span>. The tremor stays inside the band or close to it for as far as this graph goes.</p>
+
+<p>How large can the tremor get in the long run? That question is the Riemann hypothesis, in the form most useful for counting primes:</p>
+
+<div class="status">
+<h3>The Riemann hypothesis, stated with primes</h3>
+<p>There is a constant $C$ such that $|\psi(x)-x|\le C\,\sqrt{x}\,(\log x)^2$ for every $x\ge 2$.</p>
+</div>
+
+<p>Nobody has proved a bound anywhere near this. The best proven bounds are only slightly better than $x$ itself. Square-root size is also the smallest tremor one could hope for: it is what a fair coin produces when it decides, number by number, who is prime.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>The primes follow a smooth law with noise on top. The Riemann hypothesis says the noise is as small as noise can be.</p></aside>
+
+<p>The tremor is a sum of pure waves, and each wave comes from a single point in the plane where a certain function equals zero. The next chapter builds that function.</p>
+</article>
+</main>
+</body>
+</html>

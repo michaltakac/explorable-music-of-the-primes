@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zeros as notes · The Music of the Primes, explorable</title>
+<meta name="description" content="Each zero of zeta is a wave. Add the waves and the primes come out. The Riemann hypothesis says every wave plays at the same volume.">
+<link rel="icon" href="data:,">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<script type="module" src="./src/pages/music.ts"></script>
+</head>
+<body>
+<main>
+<article>
+<p class="chapter-no">Chapter 3</p>
+<h1>Zeros as notes</h1>
+
+<p class="lede">Chapter 1 ended with a tremor in the count of primes. Chapter 2 ended with a list of zeros. Riemann's formula joins them: the tremor is a sum of waves, one wave for each zero.</p>
+
+<h2>The explicit formula</h2>
+
+<p>Riemann found the formula in 1859, and von Mangoldt proved this cleaner version in 1895. It gives the weighted prime count $\psi(x)$ exactly:</p>
+
+$$\psi(x)=x-\sum_{\rho}\frac{x^{\rho}}{\rho}-\log 2\pi-\tfrac12\log\!\left(1-x^{-2}\right).$$
+
+<p>The sum runs over the zeros $\rho$ of zeta in the critical strip. The last two terms are small corrections. Everything interesting is in the sum.</p>
+
+<figure class="fig" id="fig-explicit">
+  <div class="fig-stage" style="--h: 420px" role="img" aria-label="The staircase psi of x and the explicit formula truncated to N zeros, which bends into the staircase as N grows."></div>
+  <div class="fig-controls">
+    <label>Zeros used <input type="range" min="0" max="300" step="1" data-bind="N" aria-label="number of zeros used"> <output></output></label>
+    <button class="btn" type="button" id="btn-add">Add zeros one by one</button>
+    <button class="btn" type="button" id="btn-play">Play these zeros</button>
+  </div>
+  <figcaption><span class="warm"><span class="key"></span>ψ(x)</span>, the true staircase. <span class="cool"><span class="key"></span>The formula</span> with only the first N zeros. The sound is a chord with one sine tone per zero, at a pitch proportional to its height γ.</figcaption>
+</figure>
+
+<p>With <span data-var="N" data-min="0" data-max="300" data-step="1" data-label="number of zeros used"></span> zeros the formula is <span class="prose" data-out="nDesc"></span>. Each added zero bends the curve a little closer to the stairs. At $x=$ <span data-var="X" data-min="20" data-max="300" data-step="1" data-label="right edge of the graph"></span> the formula gives <span data-out="psiN"></span> and the true value is <span data-out="psiTrue"></span>.</p>
+
+<p>Start from zero zeros: the formula is the straight line. Add the first zero and the line starts to ripple. With a few dozen, steps appear at 2, 3, 4, 5, 7, 8, 9, 11: the primes and their powers, in the right places, built from numbers that look unrelated to them.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>The prime staircase is a sound. The straight line is its steady hum, and each zero is one pure note. Play every note together and you hear exactly where the primes are.</p></aside>
+
+<h2>One zero is one wave</h2>
+
+<p>Zeros come in pairs $\tfrac12\pm i\gamma$. A pair contributes the term</p>
+
+$$-\frac{x^{\rho}}{\rho}-\frac{x^{\bar\rho}}{\bar\rho}=-\frac{2\sqrt{x}}{|\rho|}\,\cos\!\big(\gamma\log x-\varphi\big),$$
+
+<p>where $\varphi$ is a fixed phase shift. Measured against $\log x$ this is a pure wave. Its pitch is the height $\gamma$ of the zero, and its size grows like $\sqrt{x}$.</p>
+
+<figure class="fig" id="fig-wave">
+  <div class="fig-stage" style="--h: 300px" role="img" aria-label="The wave contributed by one pair of zeros, plotted against x on a logarithmic axis."></div>
+  <div class="fig-controls">
+    <button class="btn" type="button" data-bind="trueSize">Show true size (times √x)</button>
+  </div>
+  <figcaption><span class="cool"><span class="key"></span>The wave of zero number k</span>, against $x$ on a logarithmic axis. With the factor $\sqrt{x}$ removed it is a plain cosine.</figcaption>
+</figure>
+
+<p>Zero number <span data-var="k" data-min="1" data-max="30" data-step="1" data-label="which zero"></span> sits at height $\gamma=$ <span data-out="gammaK"></span>. Its wave completes one cycle each time $x$ is multiplied by <span data-out="ratioK"></span>. Higher zeros give faster waves with smaller size, since the size is divided by $|\rho|\approx\gamma$.</p>
+
+<h2>The hypothesis sets the volume</h2>
+
+<p>The size of a wave is $x^{\beta}$, where $\beta$ is the real part of its zero. For a zero on the critical line that is $\sqrt{x}$. A zero off the line, with $\beta>\tfrac12$, would give a wave that grows faster than all the others and eventually drowns them out.</p>
+
+<p>The graph below adds a made-up pair of zeros at height 10: one at real part <span data-var="beta" data-min="0.5" data-max="0.9" data-step="0.01" data-fmt="f2" data-label="real part of the made-up zero"></span> and its mirror image at <span data-out="mirror"></span>. Zeta has no zero there. This is what the prime count would look like if it did.</p>
+
+<figure class="fig" id="fig-offline">
+  <div class="fig-stage" style="--h: 360px" role="img" aria-label="The true tremor of the prime count compared with the tremor that a made-up zero off the critical line would cause."></div>
+  <div class="fig-controls">
+    <label>Real part β <input type="range" min="0.5" max="0.9" step="0.01" data-bind="beta" data-fmt="f2" aria-label="real part of the made-up zero"> <output></output></label>
+  </div>
+  <figcaption><span style="color:var(--ink-2)"><span class="key"></span>The true tremor ψ(x) − x.</span> <span class="warm"><span class="key"></span>The tremor with the made-up zeros added.</span> The shaded band is ±√x.</figcaption>
+</figure>
+
+<p>At $x=100{,}000$ the made-up notes alone swing by about <span data-out="swing"></span> either way, against $\sqrt{x}\approx316$. With $\beta=\tfrac12$ they stay in proportion to the band. Push $\beta$ up and they break out of it.</p>
+
+<p>This is the content of the Riemann hypothesis for primes. If all zeros have real part $\tfrac12$, every wave has size $\sqrt{x}$ and the tremor is as small as chapter 1 hoped. If the largest real part of any zero is $\Theta$, the tremor reaches size $x^{\Theta}$.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>The hypothesis says no instrument in the orchestra is louder than the rest. One loud instrument would be one zero off the line, and the primes would visibly lurch to its rhythm.</p></aside>
+
+<h2>Reading the primes back out of the zeros</h2>
+
+<p>The formula also runs backwards. Add up the plain cosines $\cos(\gamma u)$ over the first <span data-var="M" data-min="5" data-max="300" data-step="1" data-label="number of zeros in the sum"></span> zeros, flip the sign and rescale. The sum stays near 0 except at special values of $u$, where it spikes. The spikes sit at $u=\log 2,\ \log 3,\ \log 4,\ \log 5,\ \log 7,\dots$: the logarithms of the prime powers.</p>
+
+<figure class="fig" id="fig-spikes">
+  <div class="fig-stage" style="--h: 340px" role="img" aria-label="A sum of cosines over the zeros of zeta, with sharp spikes at the logarithms of prime powers."></div>
+  <div class="fig-controls">
+    <label>Zeros in the sum <input type="range" min="5" max="300" step="1" data-bind="M" aria-label="number of zeros in the sum"> <output></output></label>
+  </div>
+  <figcaption><span class="cool"><span class="key"></span>$-\frac{2\pi}{T}\sum_{\gamma\le T}\cos(\gamma u)$</span>, plotted against $x=e^{u}$. <span class="warm"><span class="key dot"></span> Dots</span> mark the height $\log p/\sqrt{p^{m}}$ that a formula of Landau (1911) predicts at each prime power $p^{m}$.</figcaption>
+</figure>
+
+<p>So the zeros know the primes, and the primes know the zeros. A statement about one side can be translated into a statement about the other. A formula that performs the translation for a whole class of test functions at once is called an explicit formula, or in a more structural setting a trace formula. The manuscript this site follows is built around one.</p>
+
+<p>Zeta is the first of a large family of functions with the same structure. The claim in the manuscript covers a whole branch of that family, so the family comes next.</p>
+</article>
+</main>
+</body>
+</html>

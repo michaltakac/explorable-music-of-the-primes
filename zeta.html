@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A function that knows every prime · The Music of the Primes, explorable</title>
+<meta name="description" content="Euler's product ties whole numbers to primes. Riemann let the variable be complex, and the zeros of the resulting function carry the primes' tremor.">
+<link rel="icon" href="data:,">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<script type="module" src="./src/pages/zeta.ts"></script>
+</head>
+<body>
+<main>
+<article>
+<p class="chapter-no">Chapter 2</p>
+<h1>A function that knows every prime</h1>
+
+<p class="lede">In 1737 Euler found a sum over all whole numbers that equals a product over all primes. In 1859 Riemann let the variable in that identity be a complex number. The tremor from the last chapter turned out to be recorded in the points where his function equals zero.</p>
+
+<h2>Euler's product</h2>
+
+<p>Pick a number $s$ bigger than 1 and add up $1/n^s$ over every whole number $n$. Euler showed that the same total comes out of multiplying one factor for each prime:</p>
+
+$$\zeta(s)=\sum_{n\ge 1}\frac{1}{n^{s}}=\prod_{p\ \text{prime}}\frac{1}{1-p^{-s}}.$$
+
+<figure class="fig" id="fig-euler">
+  <div class="fig-stage" style="--h: 320px" role="img" aria-label="Dots showing the product over the first k primes climbing towards the horizontal line at the value of the full sum."></div>
+  <figcaption><span class="warm"><span class="key dot"></span> the product over the first k primes</span>, for k = 1 to 40. The horizontal line is the full sum ζ(s). Drag the amber point to change how many primes are used.</figcaption>
+</figure>
+
+<p>With $s=$ <span data-var="s" data-min="1.1" data-max="4" data-step="0.01" data-fmt="f2" data-label="the exponent s"></span> the full sum is <span data-out="zetaS"></span>. The product over the first <span data-var="P" data-min="1" data-max="40" data-step="1" data-label="number of primes used"></span> primes, up to <span data-out="lastP"></span>, gives <span data-out="prodP"></span>. It is short by <span data-out="gapP"></span>.</p>
+
+<p>The identity is unique factorisation written as a formula. Each factor is a geometric series, $1+p^{-s}+p^{-2s}+\dots$, and when all the series are multiplied out every whole number appears once, because every whole number is a product of primes in one way only.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>The sum talks about all whole numbers. The product talks only about primes. Because the two are equal, anything learned about ζ is a fact about primes.</p></aside>
+
+<p>Slide $s$ down towards 1. The total grows without limit and the product needs more and more primes to keep up. At $s=1$ the sum is the harmonic series, which is infinite. Euler read that as a proof that the primes never run out, since a product of finitely many factors would be finite.</p>
+
+<h2>Complex exponents turn terms into arrows</h2>
+
+<p>Riemann's step was to let $s=\sigma+it$ be a complex number. The term $n^{-s}$ is then an arrow in the plane. Its length is $n^{-\sigma}$ and it points in the direction $-t\log n$. So $\sigma$ controls how fast the arrows shrink, and $t$ controls how fast they turn. The sum lays the arrows tip to tail.</p>
+
+<figure class="fig" id="fig-walk">
+  <div class="fig-pair wide-right">
+    <div class="fig-stage" id="fig-splane" style="--h: 440px" role="img" aria-label="The complex plane of s with the critical strip shaded, the line sigma equals one half, the first zeros, and a draggable point."></div>
+    <div class="fig-stage" id="fig-sum" style="--h: 440px" role="img" aria-label="The partial sums of the zeta series drawn tip to tail in the complex plane, spiralling around the value of zeta."></div>
+  </div>
+  <figcaption><b>Left:</b> the plane of $s$. The shaded band is the critical strip, <span class="cool"><span class="key dot"></span> dots</span> are zeros. Drag the amber point. <b>Right:</b> the first 400 terms of $\sum n^{-s}$ laid tip to tail. The <span class="cool"><span class="key dot"></span> blue point</span> is $\zeta(s)$.</figcaption>
+</figure>
+
+<p>At $s=$ <span data-out="sComplex"></span> the value is $\zeta(s)=$ <span data-out="zComplex"></span>, at distance <span data-out="zAbs"></span> from the origin. <span class="prose" data-out="regime"></span></p>
+
+<p>To the right of $\sigma=1$ the arrows shrink fast enough for the path to settle on a point. Inside the strip $0 &lt; \sigma &lt; 1$ the path never settles. It winds outwards in a growing spiral. The spiral still has a centre, and that centre is $\zeta(s)$. Riemann proved that zeta makes sense for every complex $s$ except $s=1$, through formulas that agree with the sum wherever the sum converges. The process is called analytic continuation.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>Left of the line σ = 1 the instruction "add up all the terms" stops giving an answer, but the function it described is still there. It is a road that goes on past the edge of the first map.</p></aside>
+
+<h2>Zeros</h2>
+
+<p>A zero is a value of $s$ where $\zeta(s)=0$. The zeros at $-2,-4,-6,\dots$ are called trivial and play no further part here. Every other zero lies in the critical strip $0 &lt; \sigma &lt; 1$. Riemann computed the first few by hand: $\tfrac12+14.13i$, $\tfrac12+21.02i$, $\tfrac12+25.01i$.</p>
+
+<p>Drag the amber point onto one of the blue dots in the left panel. The centre of the spiral lands on the origin.</p>
+
+<h2>Walking up the critical line</h2>
+
+<figure class="fig" id="fig-line">
+  <div class="fig-pair">
+    <div class="fig-stage" id="fig-curve" style="--h: 380px" role="img" aria-label="The curve traced by zeta of sigma plus i t in the complex plane as t increases, looping through the origin."></div>
+    <div class="fig-stage" id="fig-modulus" style="--h: 380px" role="img" aria-label="The size of zeta along the vertical line plotted against t, touching zero at the zeros."></div>
+  </div>
+  <div class="fig-controls">
+    <label>Line σ = <input type="range" min="0.5" max="1" step="0.01" data-bind="lineSigma" data-fmt="f2" aria-label="real part of the line"> <output></output></label>
+    <button class="btn" type="button" id="btn-climb">Climb from 0</button>
+  </div>
+  <figcaption><b>Left:</b> the values $\zeta(\sigma+it)$ as $t$ climbs. <b>Right:</b> their distance from the origin, $|\zeta(\sigma+it)|$. Drag the amber point to set the height $t$.</figcaption>
+</figure>
+
+<p>Hold $\sigma$ at $\tfrac12$ and let $t$ climb from 0 to <span data-var="T" data-min="1" data-max="60" data-step="0.1" data-fmt="f1" data-label="height t"></span>. The curve on the left has passed through the origin <span data-out="zeroCount"></span> so far. Each pass is a zero.</p>
+
+<p>Now move the line sideways, to $\sigma=$ <span data-var="lineSigma" data-min="0.5" data-max="1" data-step="0.01" data-fmt="f2" data-label="real part of the line"></span>. Up to the same height the curve comes no closer to the origin than <span data-out="minDist"></span>. Off the line $\sigma=\tfrac12$ it keeps missing.</p>
+
+<div class="status">
+<h3>The Riemann hypothesis, stated with zeros</h3>
+<p>Every zero of $\zeta$ in the critical strip has real part exactly $\tfrac12$.</p>
+</div>
+
+<p>Every zero computed so far obeys this. Platt and Trudgian verified in 2021 that it holds for all zeros with $t$ up to $3\cdot10^{12}$. A proof has to cover all heights at once.</p>
+
+<p>Zeta also has a mirror symmetry, the functional equation, which relates its value at $s$ to its value at $1-s$. Zeros therefore come in mirrored pairs across the line $\sigma=\tfrac12$, and the hypothesis says each zero is its own mirror image. <a href="./adeles.html">Chapter 5</a> shows where the mirror comes from.</p>
+
+<h2>The landscape</h2>
+
+<figure class="fig" id="fig-landscape">
+  <div class="fig-stage" style="--h: 520px" role="img" aria-label="Three-dimensional surface of the size of zeta over the critical strip. Pits along the line sigma equals one half mark the zeros."></div>
+  <figcaption>Height is $|\zeta(\sigma+it)|$, cut off at 3, over $-0.5\le\sigma\le1.5$ and $0\le t\le50$. The surface is tinted blue where it comes down to the floor. The line along the floor is $\sigma=\tfrac12$, the dots on it are zeros, and the numbers are their heights $t$. Drag to turn the surface.</figcaption>
+</figure>
+
+<p>The surface touches the floor only along the middle line, at the heights from the list above. Nothing in the definition of zeta forces the pits onto a straight line. The next chapter shows what each pit does to the primes.</p>
+</article>
+</main>
+</body>
+</html>

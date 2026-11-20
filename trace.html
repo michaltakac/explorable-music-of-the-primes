@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two ways to count the same thing · The Music of the Primes, explorable</title>
+<meta name="description" content="A trace formula computes one number twice. On a loop the two answers are a sum over closing points and a sum over modes. Each prime is a loop of length log p.">
+<link rel="icon" href="data:,">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<script type="module" src="./src/pages/trace.ts"></script>
+</head>
+<body>
+<main>
+<article>
+<p class="chapter-no">Chapter 6</p>
+<h1>Two ways to count the same thing</h1>
+
+<p class="lede">A trace formula computes one number in two ways and sets the answers equal. One way sees primes and the other sees zeros. This chapter works through the smallest example by hand. It is the same toy example the manuscript uses to explain its method.</p>
+
+<h2>The trace of a smear</h2>
+
+<p>Take a list of numbers and a rule that replaces each entry by a weighted mix of all the entries. That rule is a matrix. Its <b>trace</b> is the sum of the weights on the diagonal: how much of each entry stays where it was. Linear algebra says the trace also equals the sum of the eigenvalues, the factors by which the matrix stretches its own preferred directions.</p>
+
+<p>The same holds for functions in place of lists. A smear replaces the value at each point by a weighted average of values elsewhere. The weights form a kernel $k(x,y)$, and the trace is the total of $k(x,x)$ along the diagonal.</p>
+
+<aside class="plain"><h4>In plain words</h4><p>The trace asks how much of everything is still where it started. You can check place by place, or you can add up how much each natural vibration of the system was amplified. Both give the same number.</p></aside>
+
+<h2>A loop</h2>
+
+<p>Wind the positive numbers into a loop by declaring $x$ and $\gamma x$ to be the same point, for a fixed $\gamma>1$. In the coordinate $u=\log x$ this is a circle of circumference $L=\log\gamma$. The smear is built from a bump $\varphi$: it pushes the value at every point forward around the loop, spread out according to the shape of the bump.</p>
+
+<p><b>Counting by places.</b> A point keeps part of its own value only if the smear carries it all the way around and back home, once, twice, or any whole number of times. So the diagonal weight is the bump evaluated at the closing points $u=0,\pm L,\pm2L,\dots$, and</p>
+
+$$\text{trace}=L\cdot\sum_{k}\varphi(kL).$$
+
+<p><b>Counting by modes.</b> The natural vibrations of a loop are the pure waves that fit around it a whole number $m$ of times. The smear multiplies wave number $m$ by a number $\widehat\varphi(m)$, the strength of that frequency in the bump. So</p>
+
+$$\text{trace}=\sum_{m}\widehat\varphi(m).$$
+
+<figure class="fig" id="fig-loop">
+  <div class="fig-pair wide-left">
+    <div class="fig-stage" id="fig-bump" style="--h: 340px" role="img" aria-label="A bump on the line of u equals log x, with vertical marks at the closing points of the loop."></div>
+    <div class="fig-stage" id="fig-modes" style="--h: 340px" role="img" aria-label="Bars showing the multiplier of each mode of the loop. Their sum equals the count by places."></div>
+  </div>
+  <div class="fig-controls">
+    <label>Loop factor γ <input type="range" min="1.5" max="12" step="0.1" data-bind="gamma" data-fmt="f1" aria-label="loop factor gamma"> <output></output></label>
+    <span class="seg" role="group" aria-label="Set the loop factor to a prime">
+      <button class="btn" type="button" data-bind="gamma" data-value="2">2</button>
+      <button class="btn" type="button" data-bind="gamma" data-value="3">3</button>
+      <button class="btn" type="button" data-bind="gamma" data-value="5">5</button>
+      <button class="btn" type="button" data-bind="gamma" data-value="7">7</button>
+    </span>
+  </div>
+  <figcaption><b>Left:</b> the bump, against $u=\log x$. <span class="warm"><span class="key"></span>Marks</span> are the closing points of the loop. Drag the amber points to move and widen the bump. <b>Right:</b> <span class="cool"><span class="key"></span>the multiplier of each mode</span>, for $m$ from $-20$ to $20$.</figcaption>
+</figure>
+
+<div class="table-scroll">
+<table class="ledger">
+  <tr><th>Loop</th><th>Counting by places</th><th>Counting by modes</th></tr>
+  <tr><td>γ = <span data-out="gamma"></span>, length L = <span data-out="L"></span></td><td class="num"><span data-out="geo"></span></td><td class="num"><span data-out="spec"></span></td></tr>
+</table>
+</div>
+
+<p>The bump is centred at $u=$ <span data-var="c" data-min="-1" data-max="4" data-step="0.01" data-fmt="f2" data-label="centre of the bump"></span> with half-width <span data-var="w" data-min="0.1" data-max="1.5" data-step="0.01" data-fmt="f2" data-label="half-width of the bump"></span>. <span class="prose" data-out="covers"></span></p>
+
+<p>Slide the bump so that it sits strictly between two marks and touches neither. The count by places is 0, because no point can get home. On the right every bar is still there, some positive and some negative. They cancel exactly.</p>
+
+<p>The equality of the two counts is the Poisson summation formula from the last chapter. The vanishing is the fact the manuscript leans on. Its introduction states it for this example: when the bump is supported strictly inside $(1,\gamma)$, the trace on the loop is zero.</p>
+
+<h2>Every prime is a loop</h2>
+
+<p>Inside the idele class group, each prime $p$ marks out a loop of exactly this kind, with $\gamma=p$ and length $\log p$. In a number field, each prime ideal gives a loop whose length is the logarithm of its norm. Christopher Deninger proposed in the 1990s that the primes ought to be the closed orbits of some flow, with these lengths. Chapter 8 of the manuscript locates such loops as the places where pieces of its function spaces are concentrated. The author adds that this picture organises the calculation and is not logically needed for it.</p>
+
+<figure class="fig" id="fig-orbits">
+  <div class="fig-stage" style="--h: 520px" role="img" aria-label="Three-dimensional picture of particles circling loops of different lengths, one loop per prime, drawn as spirals with time running upwards. Dots mark the moments each loop closes."></div>
+  <div class="fig-controls">
+    <button class="btn" type="button" id="btn-flow" aria-pressed="false">Run the flow</button>
+  </div>
+  <figcaption>One particle per prime, all moving at the same speed. Time $u$ runs upwards, so each orbit becomes a spiral. The loop for $p$ closes at $u=\log p,\ 2\log p,\dots$ <span class="warm"><span class="key dot"></span> Closings inside the window</span> are lit. The window is the slab between the two planes. Drag to turn.</figcaption>
+</figure>
+
+<p>The window is the bump from before, now sliding along the time axis: it runs from $u=$ <span data-out="u1"></span> to <span data-out="u2"></span>, that is, from $x=$ <span data-out="x1"></span> to <span data-out="x2"></span>. A loop contributes to the trace only if it closes while the window is open.</p>
+
+<figure class="fig" id="fig-returns">
+  <div class="fig-stage" style="--h: 300px" role="img" aria-label="Spikes at the logarithms of prime powers, each of height log p, with a movable window."></div>
+  <figcaption><span class="warm"><span class="key"></span>A spike of height $\log p$</span> at each closing time $u=k\log p$, labelled by $p^k$. Drag the amber points to move and widen the window.</figcaption>
+</figure>
+
+<div class="table-scroll">
+<table class="ledger" id="ledger-primes">
+  <thead><tr><th>Closing</th><th>Time u</th><th class="num">log p</th><th class="num">Window height</th><th class="num">Contribution</th></tr></thead>
+  <tbody></tbody>
+</table>
+</div>
+
+<p>Each contribution is $\log p\cdot p^{-k/2}\cdot\varphi(k\log p)$. The factor $p^{-k/2}$ is there because the formula is centred on the critical line. The total, <span data-out="primeSide"></span>, is the prime side of the explicit formula for this window, apart from one more term for the ordinary ruler, which behaves like a resting point of the flow.</p>
+
+<p>For this window, every prime bigger than <span data-out="cutoff"></span> contributes exactly zero. Whatever window you choose, only finitely many primes can matter. The manuscript's reduction rests on this.</p>
+
+<h2>The explicit formula is a trace formula</h2>
+
+<p>André Weil wrote the explicit formula in 1952 in a form that looks just like the two counts above. For a test function $\varphi$ and its Mellin transform $\widehat\varphi$:</p>
+
+$$\sum_{\text{places } v}\big(\text{term for } v\big)(\varphi)\;=\;\widehat\varphi(\tfrac12)+\widehat\varphi(-\tfrac12)-\sum_{\rho}\widehat\varphi\big(\rho-\tfrac12\big).$$
+
+<p>On the left, one term for each prime and one for each ordinary ruler. On the right, one term for each zero $\rho$, plus two terms that come from the pole of zeta. The left side is a count by places and the right side is a count by modes. Weil proved the formula by complex analysis. He did not have an operator whose trace it computes.</p>
+
+<p>Alain Connes proposed in 1998 that there is one: the smear by $\varphi$, acting on functions on the idele class group. He proved the count by places when only finitely many primes are involved, and showed that a global version in his Hilbert space setting would be equivalent to the Riemann hypothesis. Ralf Meyer proved a global trace formula in 2005 on a much larger space of functions. In Meyer's space every zero contributes, wherever it lies, so his formula reproduces Weil's and carries no information about where the zeros are.</p>
+
+<p>The manuscript aims for a trace formula in a setting between those two. The last chapter explains how.</p>
+</article>
+</main>
+</body>
+</html>
