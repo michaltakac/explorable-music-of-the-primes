@@ -230,3 +230,5 @@ figcaption b { color: var(--ink); font-weight: 650; }
 .glossary { margin: 1rem 0; }
 .glossary dt { font-weight: 650; margin-top: 0.9rem; }
 .glossary dd { margin: 0.15rem 0 0; }
+
+.noscript { max-width: var(--wide-w); margin: 0.5rem auto; padding: 0 1.25rem; font-family: var(--sans); font-size: 0.95rem; color: var(--ink-2); }

@@ -19,7 +19,7 @@
 
 <h2>A race between two teams</h2>
 
-<p>Every odd prime leaves remainder 1 or 3 when divided by 4. Call them team 1 (5, 13, 17, 29, ...) and team 3 (3, 7, 11, 19, ...). Dirichlet proved in 1837 that both teams are infinite and, in the long run, the same size. Up to <span data-var="X" data-min="50" data-max="5000" data-step="1" data-scale="log" data-label="upper limit of the race"></span>, team 3 has <span data-out="team3"></span> primes and team 1 has <span data-out="team1"></span>.</p>
+<p>Every odd prime leaves remainder 1 or 3 when divided by 4. Call them team 1 (5, 13, 17, 29, ...) and team 3 (3, 7, 11, 19, ...). Dirichlet proved in 1837 that both teams are infinite and, in the long run, the same size. Up to <span data-var="X" data-min="50" data-max="5000" data-step="1" data-scale="log" data-label="upper limit of the race">500</span>, team 3 has <span data-out="team3">50</span> primes and team 1 has <span data-out="team1">44</span>.</p>
 
 <p>To follow the race, tag every whole number with a sign: $\chi(n)=+1$ if $n$ leaves remainder 1, $\chi(n)=-1$ if it leaves remainder 3, and $\chi(n)=0$ if $n$ is even. A tagging rule like this, one that respects multiplication, is called a character. The weighted score</p>
 
@@ -43,7 +43,7 @@ $$\psi(x,\chi)=\sum_{p^k\le x}\chi(p^k)\log p$$
 
 $$L(s,\chi)=\sum_{n\ge1}\frac{\chi(n)}{n^{s}}=\prod_{p}\frac{1}{1-\chi(p)\,p^{-s}}.$$
 
-<p>With <span data-var="K" data-min="0" data-max="20" data-step="1" data-label="number of zero pairs used"></span> pairs of its zeros the formula already follows the race. The score spends most of its time below zero: team 3 usually leads. Chebyshev noticed this in 1853. The explanation is the size of the waves, which is $\sqrt{x}$ if the zeros of $L(s,\chi)$ have real part $\tfrac12$.</p>
+<p>With <span data-var="K" data-min="0" data-max="20" data-step="1" data-label="number of zero pairs used">8</span> pairs of its zeros the formula already follows the race. The score spends most of its time below zero: team 3 usually leads. Chebyshev noticed this in 1853. The explanation is the size of the waves, which is $\sqrt{x}$ if the zeros of $L(s,\chi)$ have real part $\tfrac12$.</p>
 
 <h2>Characters and their zeros</h2>
 
@@ -67,7 +67,7 @@ $$L(s,\chi)=\sum_{n\ge1}\frac{\chi(n)}{n^{s}}=\prod_{p}\frac{1}{1-\chi(p)\,p^{-s
   <figcaption><b>Left:</b> the value $\chi(a)$ for each remainder $a$. <b>Right:</b> $|L(\tfrac12+it,\chi)|$ for $-40\le t\le 40$. <span class="cool"><span class="key dot"></span> Dots</span> are zeros, computed separately to 15 digits.</figcaption>
 </figure>
 
-<p><span class="prose" data-out="chiDesc"></span> Its first zero above the real axis is at height <span data-out="firstZero"></span>, and there are <span data-out="zeroCount"></span> zeros with $|t|\le 40$.</p>
+<p><span class="prose" data-out="chiDesc">The character mod 4 sends remainder 1 to +1 and remainder 3 to −1. It is the scorekeeper of the race above.</span> Its first zero above the real axis is at height <span data-out="firstZero">6.021</span>, and there are <span data-out="zeroCount">28</span> zeros with $|t|\le 40$.</p>
 
 <p>For a character with real values the picture is symmetric: zeros above and below the axis mirror each other. The complex character mod 5 breaks that symmetry. Its zeros below the axis are the mirror images of the zeros of its conjugate character instead.</p>
 
@@ -90,7 +90,7 @@ $$L(s,\chi)=\sum_{n\ge1}\frac{\chi(n)}{n^{s}}=\prod_{p}\frac{1}{1-\chi(p)\,p^{-s
   <figcaption>Gaussian primes $a+bi$. <span class="cool"><span class="key dot"></span> Blue:</span> factors of an ordinary prime from team 1, such as $5=(2+i)(2-i)$. <span class="warm"><span class="key dot"></span> Red:</span> ordinary primes from team 3, which stay prime. <span class="key dot"></span> $1+i$ and its rotations, the factors of 2. Move the pointer over the plane to inspect a point.</figcaption>
 </figure>
 
-<p>Inside radius <span data-var="R" data-min="8" data-max="60" data-step="1" data-label="radius"></span> there are <span data-out="gaussCount"></span> Gaussian primes. The race from the top of this chapter decides their shape: a prime from team 1 splits into two Gaussian primes, and a prime from team 3 stays whole. The zeta function of the Gaussian integers reflects that. It is the product $\zeta(s)\,L(s,\chi)$ with $\chi$ the character mod 4.</p>
+<p>Inside radius <span data-var="R" data-min="8" data-max="60" data-step="1" data-label="radius">25</span> there are <span data-out="gaussCount">456</span> Gaussian primes. The race from the top of this chapter decides their shape: a prime from team 1 splits into two Gaussian primes, and a prime from team 3 stays whole. The zeta function of the Gaussian integers reflects that. It is the product $\zeta(s)\,L(s,\chi)$ with $\chi$ the character mod 4.</p>
 
 <p>Primes in a number field can be tagged too. For Gaussian primes one can use the direction in which the prime points, $\chi(a+bi)=\big(\tfrac{a+bi}{|a+bi|}\big)^{4}$. Tags of this kind are called Hecke characters, after Erich Hecke, who showed around 1920 that their L-functions have the same mirror symmetry and the same kind of zeros as zeta. Dirichlet characters are the Hecke characters of the rational numbers that take finitely many values.</p>
 

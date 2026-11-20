@@ -57,11 +57,11 @@ $$\text{trace}=\sum_{m}\widehat\varphi(m).$$
 <div class="table-scroll">
 <table class="ledger">
   <tr><th>Loop</th><th>Counting by places</th><th>Counting by modes</th></tr>
-  <tr><td>γ = <span data-out="gamma"></span>, length L = <span data-out="L"></span></td><td class="num"><span data-out="geo"></span></td><td class="num"><span data-out="spec"></span></td></tr>
+  <tr><td>γ = <span data-out="gamma">3.0</span>, length L = <span data-out="L">1.099</span></td><td class="num"><span data-out="geo">1.04457</span></td><td class="num"><span data-out="spec">1.04457</span></td></tr>
 </table>
 </div>
 
-<p>The bump is centred at $u=$ <span data-var="c" data-min="-1" data-max="4" data-step="0.01" data-fmt="f2" data-label="centre of the bump"></span> with half-width <span data-var="w" data-min="0.1" data-max="1.5" data-step="0.01" data-fmt="f2" data-label="half-width of the bump"></span>. <span class="prose" data-out="covers"></span></p>
+<p>The bump is centred at $u=$ <span data-var="c" data-min="-1" data-max="4" data-step="0.01" data-fmt="f2" data-label="centre of the bump">1.00</span> with half-width <span data-var="w" data-min="0.1" data-max="1.5" data-step="0.01" data-fmt="f2" data-label="half-width of the bump">0.45</span>. <span class="prose" data-out="covers">It covers one closing point.</span></p>
 
 <p>Slide the bump so that it sits strictly between two marks and touches neither. The count by places is 0, because no point can get home. On the right every bar is still there, some positive and some negative. They cancel exactly.</p>
 
@@ -79,7 +79,7 @@ $$\text{trace}=\sum_{m}\widehat\varphi(m).$$
   <figcaption>One particle per prime, all moving at the same speed. Time $u$ runs upwards, so each orbit becomes a spiral. The loop for $p$ closes at $u=\log p,\ 2\log p,\dots$ <span class="warm"><span class="key dot"></span> Closings inside the window</span> are lit. The window is the slab between the two planes. Drag to turn.</figcaption>
 </figure>
 
-<p>The window is the bump from before, now sliding along the time axis: it runs from $u=$ <span data-out="u1"></span> to <span data-out="u2"></span>, that is, from $x=$ <span data-out="x1"></span> to <span data-out="x2"></span>. A loop contributes to the trace only if it closes while the window is open.</p>
+<p>The window is the bump from before, now sliding along the time axis: it runs from $u=$ <span data-out="u1">0.95</span> to <span data-out="u2">2.05</span>, that is, from $x=$ <span data-out="x1">2.6</span> to <span data-out="x2">7.8</span>. A loop contributes to the trace only if it closes while the window is open.</p>
 
 <figure class="fig" id="fig-returns">
   <div class="fig-stage" style="--h: 300px" role="img" aria-label="Spikes at the logarithms of prime powers, each of height log p, with a movable window."></div>
@@ -93,9 +93,9 @@ $$\text{trace}=\sum_{m}\widehat\varphi(m).$$
 </table>
 </div>
 
-<p>Each contribution is $\log p\cdot p^{-k/2}\cdot\varphi(k\log p)$. The factor $p^{-k/2}$ is there because the formula is centred on the critical line. The total, <span data-out="primeSide"></span>, is the prime side of the explicit formula for this window, apart from one more term for the ordinary ruler, which behaves like a resting point of the flow.</p>
+<p>Each contribution is $\log p\cdot p^{-k/2}\cdot\varphi(k\log p)$. The factor $p^{-k/2}$ is there because the formula is centred on the critical line. The total, <span data-out="primeSide">1.3331</span>, is the prime side of the explicit formula for this window, apart from one more term for the ordinary ruler, which behaves like a resting point of the flow.</p>
 
-<p>For this window, every prime bigger than <span data-out="cutoff"></span> contributes exactly zero. Whatever window you choose, only finitely many primes can matter. The manuscript's reduction rests on this.</p>
+<p>For this window, every prime bigger than <span data-out="cutoff">7.8</span> contributes exactly zero. Whatever window you choose, only finitely many primes can matter. The manuscript's reduction rests on this.</p>
 
 <h2>The explicit formula is a trace formula</h2>
 

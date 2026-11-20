@@ -1,12 +1,10 @@
 import { figure } from "../lib/figure";
-import { tocHtml } from "../lib/layout";
 import { psi, psiFromZeros } from "../lib/math/numbers";
 import { page, steps } from "../lib/page";
 import { plot2d } from "../lib/plot2d";
 import { store } from "../lib/store";
 
 const s = store({ N: 12 });
-document.getElementById("toc")!.innerHTML = tocHtml();
 page(s);
 
 figure("fig-hero", (stage) => {

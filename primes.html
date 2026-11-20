@@ -31,11 +31,11 @@
   <figcaption><span class="warm"><span class="key"></span>π(x)</span>, one step per prime. Move the pointer over the graph to read values. Both smooth curves can be switched on and off.</figcaption>
 </figure>
 
-<p>Up to <span data-var="X" data-min="30" data-max="100000" data-step="1" data-scale="log" data-label="upper limit X"></span> there are <span data-out="pi"></span> primes. Gauss, working from printed tables as a teenager, guessed that near a number $x$ about one number in $\log x$ is prime. Adding up those odds from 2 to $x$ gives the smooth curve</p>
+<p>Up to <span data-var="X" data-min="30" data-max="100000" data-step="1" data-scale="log" data-label="upper limit X">100</span> there are <span data-out="pi">25</span> primes. Gauss, working from printed tables as a teenager, guessed that near a number $x$ about one number in $\log x$ is prime. Adding up those odds from 2 to $x$ gives the smooth curve</p>
 
 $$\mathrm{Li}(x)=\int_2^x \frac{dt}{\log t},$$
 
-<p>which predicts <span data-out="li"></span>. The guess is off by <span data-out="err"></span>, which is <span data-out="errpct"></span> of the count.</p>
+<p>which predicts <span data-out="li">29.1</span>. The guess is off by <span data-out="err">4.1</span>, which is <span data-out="errpct">16.3%</span> of the count.</p>
 
 <aside class="plain"><h4>In plain words</h4><p>Primes thin out as numbers grow, and they thin out at a known rate. Near a million about one number in 14 is prime. Near a billion it is about one in 21.</p></aside>
 
@@ -66,7 +66,7 @@ $$\psi(x)=\sum_{p^k\le x}\log p .$$
   <figcaption><span class="warm"><span class="key"></span>ψ(x) − x</span>. The shaded band is ±√x.</figcaption>
 </figure>
 
-<p>Up to <span data-var="Y" data-min="100" data-max="100000" data-step="1" data-scale="log" data-label="upper limit of the error plot"></span> the largest miss is <span data-out="maxerr"></span>, while $\sqrt{x}$ at the right-hand edge is <span data-out="sqrtY"></span>. The tremor stays inside the band or close to it for as far as this graph goes.</p>
+<p>Up to <span data-var="Y" data-min="100" data-max="100000" data-step="1" data-scale="log" data-label="upper limit of the error plot">1,000</span> the largest miss is <span data-out="maxerr">16.3</span>, while $\sqrt{x}$ at the right-hand edge is <span data-out="sqrtY">31.6</span>. The tremor stays inside the band or close to it for as far as this graph goes.</p>
 
 <p>How large can the tremor get in the long run? That question is the Riemann hypothesis, in the form most useful for counting primes:</p>
 

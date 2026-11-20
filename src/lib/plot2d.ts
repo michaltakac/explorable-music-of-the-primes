@@ -153,6 +153,8 @@ export function plot2d(stage: Stage, o: PlotOpts) {
       const [px] = toPx(t.v, y0);
       s.style.left = px + "px";
       s.style.top = H - M.b + "px";
+      // a long label on the last tick would run off the right edge, so hang it to the left
+      if (px > W - M.r - 22 && t.label.length > 3) s.style.transform = "translate(-88%, 6px)";
       tickLayer.append(s);
     }
     for (const t of yt) {

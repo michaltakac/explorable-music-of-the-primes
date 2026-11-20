@@ -28,7 +28,7 @@ $$\zeta(s)=\sum_{n\ge 1}\frac{1}{n^{s}}=\prod_{p\ \text{prime}}\frac{1}{1-p^{-s}
   <figcaption><span class="warm"><span class="key dot"></span> the product over the first k primes</span>, for k = 1 to 40. The horizontal line is the full sum ζ(s). Drag the amber point to change how many primes are used.</figcaption>
 </figure>
 
-<p>With $s=$ <span data-var="s" data-min="1.1" data-max="4" data-step="0.01" data-fmt="f2" data-label="the exponent s"></span> the full sum is <span data-out="zetaS"></span>. The product over the first <span data-var="P" data-min="1" data-max="40" data-step="1" data-label="number of primes used"></span> primes, up to <span data-out="lastP"></span>, gives <span data-out="prodP"></span>. It is short by <span data-out="gapP"></span>.</p>
+<p>With $s=$ <span data-var="s" data-min="1.1" data-max="4" data-step="0.01" data-fmt="f2" data-label="the exponent s">2.00</span> the full sum is <span data-out="zetaS">1.6449</span>. The product over the first <span data-var="P" data-min="1" data-max="40" data-step="1" data-label="number of primes used">5</span> primes, up to <span data-out="lastP">11</span>, gives <span data-out="prodP">1.6083</span>. It is short by <span data-out="gapP">0.0366</span>.</p>
 
 <p>The identity is unique factorisation written as a formula. Each factor is a geometric series, $1+p^{-s}+p^{-2s}+\dots$, and when all the series are multiplied out every whole number appears once, because every whole number is a product of primes in one way only.</p>
 
@@ -48,7 +48,7 @@ $$\zeta(s)=\sum_{n\ge 1}\frac{1}{n^{s}}=\prod_{p\ \text{prime}}\frac{1}{1-p^{-s}
   <figcaption><b>Left:</b> the plane of $s$. The shaded band is the critical strip, <span class="cool"><span class="key dot"></span> dots</span> are zeros. Drag the amber point. <b>Right:</b> the first 400 terms of $\sum n^{-s}$ laid tip to tail. The <span class="cool"><span class="key dot"></span> blue point</span> is $\zeta(s)$.</figcaption>
 </figure>
 
-<p>At $s=$ <span data-out="sComplex"></span> the value is $\zeta(s)=$ <span data-out="zComplex"></span>, at distance <span data-out="zAbs"></span> from the origin. <span class="prose" data-out="regime"></span></p>
+<p>At $s=$ <span data-out="sComplex">0.70 + 12.00i</span> the value is $\zeta(s)=$ <span data-out="zComplex">0.995 − 0.647i</span>, at distance <span data-out="zAbs">1.187</span> from the origin. <span class="prose" data-out="regime">Here s is inside the critical strip, so the path spirals around ζ(s) without settling.</span></p>
 
 <p>To the right of $\sigma=1$ the arrows shrink fast enough for the path to settle on a point. Inside the strip $0 &lt; \sigma &lt; 1$ the path never settles. It winds outwards in a growing spiral. The spiral still has a centre, and that centre is $\zeta(s)$. Riemann proved that zeta makes sense for every complex $s$ except $s=1$, through formulas that agree with the sum wherever the sum converges. The process is called analytic continuation.</p>
 
@@ -74,9 +74,9 @@ $$\zeta(s)=\sum_{n\ge 1}\frac{1}{n^{s}}=\prod_{p\ \text{prime}}\frac{1}{1-p^{-s}
   <figcaption><b>Left:</b> the values $\zeta(\sigma+it)$ as $t$ climbs. <b>Right:</b> their distance from the origin, $|\zeta(\sigma+it)|$. Drag the amber point to set the height $t$.</figcaption>
 </figure>
 
-<p>Hold $\sigma$ at $\tfrac12$ and let $t$ climb from 0 to <span data-var="T" data-min="1" data-max="60" data-step="0.1" data-fmt="f1" data-label="height t"></span>. The curve on the left has passed through the origin <span data-out="zeroCount"></span> so far. Each pass is a zero.</p>
+<p>Hold $\sigma$ at $\tfrac12$ and let $t$ climb from 0 to <span data-var="T" data-min="1" data-max="60" data-step="0.1" data-fmt="f1" data-label="height t">30.0</span>. The curve on the left has passed through the origin <span data-out="zeroCount">3 times</span> so far. Each pass is a zero.</p>
 
-<p>Now move the line sideways, to $\sigma=$ <span data-var="lineSigma" data-min="0.5" data-max="1" data-step="0.01" data-fmt="f2" data-label="real part of the line"></span>. Up to the same height the curve comes no closer to the origin than <span data-out="minDist"></span>. Off the line $\sigma=\tfrac12$ it keeps missing.</p>
+<p>Now move the line sideways, to $\sigma=$ <span data-var="lineSigma" data-min="0.5" data-max="1" data-step="0.01" data-fmt="f2" data-label="real part of the line">0.50</span>. Up to the same height the curve comes no closer to the origin than <span data-out="minDist">0.003</span>. Off the line $\sigma=\tfrac12$ it keeps missing.</p>
 
 <div class="status">
 <h3>The Riemann hypothesis, stated with zeros</h3>

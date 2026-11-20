@@ -34,7 +34,7 @@ $$|x|_p=p^{-k}.$$
   <figcaption>The size of $x$ on each ruler, on a logarithmic scale. A bar above the line means bigger than 1, below means smaller. <span class="warm"><span class="key"></span>Prime rulers</span>, <span style="color:var(--ink)"><span class="key"></span>the ordinary ruler</span> (marked ∞).</figcaption>
 </figure>
 
-<p>Take $x=$ <span data-var="a" data-min="1" data-max="720" data-step="1" data-label="numerator"></span>$/$<span data-var="b" data-min="1" data-max="720" data-step="1" data-label="denominator"></span>, which factors as <span class="prose" data-out="factored"></span>. Its sizes are <span class="prose" data-out="sizes"></span>. Multiply all of them together and the answer is <span data-out="product"></span>.</p>
+<p>Take $x=$ <span data-var="a" data-min="1" data-max="720" data-step="1" data-label="numerator">360</span>$/$<span data-var="b" data-min="1" data-max="720" data-step="1" data-label="denominator">7</span>, which factors as <span class="prose" data-out="factored">2³ · 3² · 5 · 7⁻¹</span>. Its sizes are <span class="prose" data-out="sizes">51.429 on the ordinary ruler, 1/8 on the 2-adic ruler, 1/9 on the 3-adic ruler, 1/5 on the 5-adic ruler, 7 on the 7-adic ruler, and 1 on every other ruler</span>. Multiply all of them together and the answer is <span data-out="product">1</span>.</p>
 
 <p>It is always 1. Whatever a rational number gains on one ruler it loses on the others. This is called the product formula, and it is the reason the rulers belong together:</p>
 
@@ -74,11 +74,11 @@ $$C_{\mathbf{Q}}=\text{ideles}\,/\,\mathbf{Q}^{\times},$$
   <figcaption>Each ring is one shell of the ball $\mathbf{Z}_p$, drawn for whole numbers. Numbers that agree in their first $p$-adic digits sit close together on a ring. Multiplying by $p$ carries each ring onto the next one in. The gap in each ring is where the multiples of $p$ would be; they live on the inner rings. <span class="warm"><span class="key dot"></span> Lit rings</span> are the shells counted so far.</figcaption>
 </figure>
 
-<p>Now weigh the shells. Give a point of size $|x|_p$ the weight $|x|_p^{\,s}$ and add up over a shell, using the measure that suits multiplication, in which every shell has the same total mass. Shell number $k$ then weighs $p^{-ks}$. With $p=$ <span data-out="pVal"></span> and $s=$ <span data-var="s" data-min="0.5" data-max="3" data-step="0.05" data-fmt="f2" data-label="the exponent s"></span>, the first <span data-out="shellsWord"></span> weigh <span data-out="shellSum"></span> together. All the shells together weigh</p>
+<p>Now weigh the shells. Give a point of size $|x|_p$ the weight $|x|_p^{\,s}$ and add up over a shell, using the measure that suits multiplication, in which every shell has the same total mass. Shell number $k$ then weighs $p^{-ks}$. With $p=$ <span data-out="pVal">3</span> and $s=$ <span data-var="s" data-min="0.5" data-max="3" data-step="0.05" data-fmt="f2" data-label="the exponent s">1.00</span>, the first <span data-out="shellsWord">shell</span> weigh <span data-out="shellSum">1.0000</span> together. All the shells together weigh</p>
 
 $$1+p^{-s}+p^{-2s}+\dots=\frac{1}{1-p^{-s}},$$
 
-<p>which here equals <span data-out="eulerFactor"></span>. That is the factor for $p$ in Euler's product. The outer shell alone weighs exactly 1.</p>
+<p>which here equals <span data-out="eulerFactor">1.5000</span>. That is the factor for $p$ in Euler's product. The outer shell alone weighs exactly 1.</p>
 
 <aside class="plain"><h4>In plain words</h4><p>Each Euler factor is what you get by weighing a whole $p$-adic ball. Weigh only its outer shell and the factor disappears. The manuscript uses this to switch off the factor for one prime at a time.</p></aside>
 
@@ -95,7 +95,7 @@ $$\theta(t)=\sum_{n\neq0}f(nt)$$
   <figcaption><span class="warm"><span class="key"></span>$1+\theta(t)$</span>, the folded bell curve with the $n=0$ term put back. <span class="cool"><span class="key"></span>$\sqrt{t}\,\big(1+\theta(t)\big)$</span>, the same thing rescaled. The axis is logarithmic in $t$. Drag the amber point. The blue point is its mirror image at $1/t$.</figcaption>
 </figure>
 
-<p>At $t=$ <span data-var="t" data-min="0.15" data-max="6.5" data-step="0.01" data-scale="log" data-fmt="f2" data-label="scale t"></span> the blue curve has height <span data-out="gT"></span>. At $1/t=$ <span data-out="tInv"></span> its height is <span data-out="gInv"></span>. The blue curve is a perfect mirror image of itself under $t\mapsto1/t$. Jacobi found this identity in the 1820s. It comes from the Poisson summation formula: summing a function over a grid gives the same answer as summing its Fourier transform over the reciprocal grid, and the bell curve is its own Fourier transform.</p>
+<p>At $t=$ <span data-var="t" data-min="0.15" data-max="6.5" data-step="0.01" data-scale="log" data-fmt="f2" data-label="scale t">0.50</span> the blue curve has height <span data-out="gT">1.4142</span>. At $1/t=$ <span data-out="tInv">2.00</span> its height is <span data-out="gInv">1.4142</span>. The blue curve is a perfect mirror image of itself under $t\mapsto1/t$. Jacobi found this identity in the 1820s. It comes from the Poisson summation formula: summing a function over a grid gives the same answer as summing its Fourier transform over the reciprocal grid, and the bell curve is its own Fourier transform.</p>
 
 <p>Riemann's second proof of the functional equation turns this picture into a statement about zeta. Decompose $\theta$ into pure powers $t^{-s}$ (this is called the Mellin transform). Folding contributes the factor $\sum n^{-s}=\zeta(s)$, the bell curve contributes a factor built from the gamma function, and the mirror $t\mapsto 1/t$ becomes the mirror $s\mapsto 1-s$:</p>
 

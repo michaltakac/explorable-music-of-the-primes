@@ -35,7 +35,7 @@ $$\psi(x)=x-\sum_{\rho}\frac{x^{\rho}}{\rho}-\log 2\pi-\tfrac12\log\!\left(1-x^{
   <figcaption><span class="warm"><span class="key"></span>ψ(x)</span>, the true staircase. <span class="cool"><span class="key"></span>The formula</span> with only the first N zeros. The sound is a chord with one sine tone per zero, at a pitch proportional to its height γ.</figcaption>
 </figure>
 
-<p>With <span data-var="N" data-min="0" data-max="300" data-step="1" data-label="number of zeros used"></span> zeros the formula is <span class="prose" data-out="nDesc"></span>. Each added zero bends the curve a little closer to the stairs. At $x=$ <span data-var="X" data-min="20" data-max="300" data-step="1" data-label="right edge of the graph"></span> the formula gives <span data-out="psiN"></span> and the true value is <span data-out="psiTrue"></span>.</p>
+<p>With <span data-var="N" data-min="0" data-max="300" data-step="1" data-label="number of zeros used">10</span> zeros the formula is <span class="prose" data-out="nDesc">the line plus 10 waves</span>. Each added zero bends the curve a little closer to the stairs. At $x=$ <span data-var="X" data-min="20" data-max="300" data-step="1" data-label="right edge of the graph">60</span> the formula gives <span data-out="psiN">58.04</span> and the true value is <span data-out="psiTrue">57.53</span>.</p>
 
 <p>Start from zero zeros: the formula is the straight line. Add the first zero and the line starts to ripple. With a few dozen, steps appear at 2, 3, 4, 5, 7, 8, 9, 11: the primes and their powers, in the right places, built from numbers that look unrelated to them.</p>
 
@@ -57,13 +57,13 @@ $$-\frac{x^{\rho}}{\rho}-\frac{x^{\bar\rho}}{\bar\rho}=-\frac{2\sqrt{x}}{|\rho|}
   <figcaption><span class="cool"><span class="key"></span>The wave of zero number k</span>, against $x$ on a logarithmic axis. With the factor $\sqrt{x}$ removed it is a plain cosine.</figcaption>
 </figure>
 
-<p>Zero number <span data-var="k" data-min="1" data-max="30" data-step="1" data-label="which zero"></span> sits at height $\gamma=$ <span data-out="gammaK"></span>. Its wave completes one cycle each time $x$ is multiplied by <span data-out="ratioK"></span>. Higher zeros give faster waves with smaller size, since the size is divided by $|\rho|\approx\gamma$.</p>
+<p>Zero number <span data-var="k" data-min="1" data-max="30" data-step="1" data-label="which zero">1</span> sits at height $\gamma=$ <span data-out="gammaK">14.135</span>. Its wave completes one cycle each time $x$ is multiplied by <span data-out="ratioK">1.560</span>. Higher zeros give faster waves with smaller size, since the size is divided by $|\rho|\approx\gamma$.</p>
 
 <h2>The hypothesis sets the volume</h2>
 
 <p>The size of a wave is $x^{\beta}$, where $\beta$ is the real part of its zero. For a zero on the critical line that is $\sqrt{x}$. A zero off the line, with $\beta>\tfrac12$, would give a wave that grows faster than all the others and eventually drowns them out.</p>
 
-<p>The graph below adds a made-up pair of zeros at height 10: one at real part <span data-var="beta" data-min="0.5" data-max="0.9" data-step="0.01" data-fmt="f2" data-label="real part of the made-up zero"></span> and its mirror image at <span data-out="mirror"></span>. Zeta has no zero there. This is what the prime count would look like if it did.</p>
+<p>The graph below adds a made-up pair of zeros at height 10: one at real part <span data-var="beta" data-min="0.5" data-max="0.9" data-step="0.01" data-fmt="f2" data-label="real part of the made-up zero">0.50</span> and its mirror image at <span data-out="mirror">0.50</span>. Zeta has no zero there. This is what the prime count would look like if it did.</p>
 
 <figure class="fig" id="fig-offline">
   <div class="fig-stage" style="--h: 360px" role="img" aria-label="The true tremor of the prime count compared with the tremor that a made-up zero off the critical line would cause."></div>
@@ -73,7 +73,7 @@ $$-\frac{x^{\rho}}{\rho}-\frac{x^{\bar\rho}}{\bar\rho}=-\frac{2\sqrt{x}}{|\rho|}
   <figcaption><span style="color:var(--ink-2)"><span class="key"></span>The true tremor ψ(x) − x.</span> <span class="warm"><span class="key"></span>The tremor with the made-up zeros added.</span> The shaded band is ±√x.</figcaption>
 </figure>
 
-<p>At $x=100{,}000$ the made-up notes alone swing by about <span data-out="swing"></span> either way, against $\sqrt{x}\approx316$. With $\beta=\tfrac12$ they stay in proportion to the band. Push $\beta$ up and they break out of it.</p>
+<p>At $x=100{,}000$ the made-up notes alone swing by about <span data-out="swing">126</span> either way, against $\sqrt{x}\approx316$. With $\beta=\tfrac12$ they stay in proportion to the band. Push $\beta$ up and they break out of it.</p>
 
 <p>This is the content of the Riemann hypothesis for primes. If all zeros have real part $\tfrac12$, every wave has size $\sqrt{x}$ and the tremor is as small as chapter 1 hoped. If the largest real part of any zero is $\Theta$, the tremor reaches size $x^{\Theta}$.</p>
 
@@ -81,7 +81,7 @@ $$-\frac{x^{\rho}}{\rho}-\frac{x^{\bar\rho}}{\bar\rho}=-\frac{2\sqrt{x}}{|\rho|}
 
 <h2>Reading the primes back out of the zeros</h2>
 
-<p>The formula also runs backwards. Add up the plain cosines $\cos(\gamma u)$ over the first <span data-var="M" data-min="5" data-max="300" data-step="1" data-label="number of zeros in the sum"></span> zeros, flip the sign and rescale. The sum stays near 0 except at special values of $u$, where it spikes. The spikes sit at $u=\log 2,\ \log 3,\ \log 4,\ \log 5,\ \log 7,\dots$: the logarithms of the prime powers.</p>
+<p>The formula also runs backwards. Add up the plain cosines $\cos(\gamma u)$ over the first <span data-var="M" data-min="5" data-max="300" data-step="1" data-label="number of zeros in the sum">100</span> zeros, flip the sign and rescale. The sum stays near 0 except at special values of $u$, where it spikes. The spikes sit at $u=\log 2,\ \log 3,\ \log 4,\ \log 5,\ \log 7,\dots$: the logarithms of the prime powers.</p>
 
 <figure class="fig" id="fig-spikes">
   <div class="fig-stage" style="--h: 340px" role="img" aria-label="A sum of cosines over the zeros of zeta, with sharp spikes at the logarithms of prime powers."></div>

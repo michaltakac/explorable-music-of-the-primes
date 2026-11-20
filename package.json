@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "data": "python3 scripts/gen_zeros.py"
+    "data": "python3 scripts/gen_zeros.py",
+    "bake": "python3 scripts/bake_defaults.py",
+    "og": "python3 scripts/og_images.py",
+    "figures": "python3 scripts/readme_figures.py"
   },
   "dependencies": {
     "@fontsource-variable/source-sans-3": "^5.3.1",
@@ -17,6 +20,7 @@
     "three": "^0.139.2"
   },
   "devDependencies": {
+    "node-html-parser": "^9.0.7",
     "typescript": "^7.0.2",
     "vite": "^8.3.8"
   }

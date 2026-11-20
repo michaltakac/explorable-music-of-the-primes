@@ -1,0 +1,25 @@
+{
+  "url": "https://michaltakac.github.io/explorable-music-of-the-primes/",
+  "name": "The Music of the Primes, explorable",
+  "author": "Michal Takac",
+  "repo": "https://github.com/michaltakac/explorable-music-of-the-primes",
+  "manuscript": {
+    "title": "The Music of the Primes",
+    "author": "Alessandro Maria Masullo",
+    "pdf": "https://math216.wordpress.com/wp-content/uploads/2026/11/the-music-of-the-primes.pdf",
+    "announcement": "https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/",
+    "date": "2026-11-20"
+  },
+  "summary": "An explorable guide to Alessandro Maria Masullo's manuscript The Music of the Primes, a proposed proof of the generalized Riemann hypothesis for Hecke L-functions of number fields. Seven chapters build up the mathematics with live figures: prime counting, the zeta function, the explicit formula, L-functions, adeles, trace formulas, and the manuscript's strategy. The manuscript is an unrefereed draft, and the guide does not vouch for the proof.",
+  "pages": [
+    { "file": "index.html", "short": "Start", "kicker": "An explorable guide", "title": "The music of the primes", "blurb": "The mathematics behind a proposed proof of the generalized Riemann hypothesis, with figures you can change by hand.", "about": ["Riemann hypothesis", "Generalized Riemann hypothesis", "Prime number"] },
+    { "file": "primes.html", "short": "1", "kicker": "Chapter 1", "title": "Counting primes", "blurb": "The primes look scattered. Count them and a shape appears, with a tremor on top.", "about": ["Prime-counting function", "Prime number theorem", "Chebyshev function"] },
+    { "file": "zeta.html", "short": "2", "kicker": "Chapter 2", "title": "A function that knows every prime", "blurb": "Euler's product, the complex plane, and the points where zeta vanishes.", "about": ["Riemann zeta function", "Euler product", "Analytic continuation"] },
+    { "file": "music.html", "short": "3", "kicker": "Chapter 3", "title": "Zeros as notes", "blurb": "Each zero is a wave. Add them up and the primes come out. The Riemann hypothesis fixes the volume.", "about": ["Explicit formulae for L-functions", "Riemann hypothesis", "Zeros of the zeta function"] },
+    { "file": "family.html", "short": "4", "kicker": "Chapter 4", "title": "The whole family of L-functions", "blurb": "Characters sort primes into classes. The generalized hypothesis covers all of them.", "about": ["Dirichlet L-function", "Hecke character", "Generalized Riemann hypothesis", "Gaussian integer"] },
+    { "file": "adeles.html", "short": "5", "kicker": "Chapter 5", "title": "Every prime's point of view", "blurb": "Sizes measured prime by prime, shells inside p-adic balls, and functions folded over the rationals.", "about": ["Adele ring", "p-adic number", "Tate's thesis", "Theta function"] },
+    { "file": "trace.html", "short": "6", "kicker": "Chapter 6", "title": "Two ways to count the same thing", "blurb": "A loop, a smear, and a number computed twice. Each prime is a loop of length log p.", "about": ["Trace formula", "Poisson summation formula", "Weil's explicit formula"] },
+    { "file": "proof.html", "short": "7", "kicker": "Chapter 7", "title": "The strategy of the manuscript", "blurb": "One prime at a time, in a room where only nearby zeros can be heard.", "about": ["Generalized Riemann hypothesis", "Trace formula", "Idele class group", "Hecke L-function"] },
+    { "file": "status.html", "short": "Status", "kicker": "Reference", "title": "Status, sources, glossary", "blurb": "What the manuscript contains today, what is unfinished, and where to read more.", "about": ["Generalized Riemann hypothesis", "Mathematical proof"] }
+  ]
+}

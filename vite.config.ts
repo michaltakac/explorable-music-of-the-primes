@@ -1,11 +1,13 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
 import { readdirSync } from "node:fs";
+import { sitePlugin } from "./build/site-plugin";
 
 const pages = readdirSync(__dirname).filter((f) => f.endsWith(".html"));
 
 export default defineConfig({
   base: "./",
+  plugins: [sitePlugin(__dirname)],
   build: {
     target: "es2022",
     rollupOptions: {
